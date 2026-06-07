@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="es" data-status="checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS — Radio comunitaria independiente desde Sant Salvador, Tarragona. Sin jerarquías, para tod@s.">
+  <meta name="theme-color" content="#f5c518">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BRM INFO">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS 📻">
+  <meta property="og:description" content="Radio comunitaria independiente desde Sant Salvador, Tarragona — Sin jerarquías, para tod@s. Debates, conocimiento, música Open Format. ¡AUUUAUUU!">
+  <meta property="og:url" content="https://brm.worldmos.info">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS">
+  <meta name="twitter:description" content="Radio comunitaria independiente · Sant Salvador · Para tod@s · ¡AUUUAUUU! 🐺">
+  <title>📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · 666.333</title>
+
+  <!-- Fuentes Google — misma familia que brm.worldmos.world -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════
+       RESET & VARIABLES
+    ══════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      /* Fondos */
+      --bg:       #0a0a0a;
+      --bg2:      #0f0f14;
+      --bg3:      #161620;
+      --bg4:      #1e1e2c;
+      /* Amarillo — #f5c518 como pide el prompt */
+      --amber:    #f5c518;
+      --amber2:   #ffd700;
+      --amber3:   #fff3a0;
+      --amber4:   #8a6e00;
+      --amber5:   rgba(245,197,24,0.07);
+      /* Utilidad */
+      --red:      #ef4444;
+      --green:    #10b981;
+      --white:    #f0ede8;
+      --muted:    #6a6a7a;
+      --muted2:   #3a3a50;
+      --border:   #1e1e32;
+      --border2:  #2a2a44;
+      --glow-a:   rgba(245,197,24,0.10);
+      --radius:   6px;
+      /* Tipografías */
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      --font-cond: 'Barlow Condensed', monospace;
+      --font-disp: 'Bebas Neue', monospace;
+      --font-syne: 'Syne', monospace;
+      /* Layout */
+      --ticker-h: 36px;
+      --fs-xs: 9px;
+      --fs-sm: 11px;
+      --fs-base: 13px;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grain overlay ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.5;
+    }
+
+    /* ── Scanlines retro ── */
+    .scanlines {
+      position: fixed; inset: 0;
+      background: repeating-linear-gradient(
+        to bottom, transparent 0px, transparent 2px,
+        rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 3px
+      );
+      pointer-events: none; z-index: 9998; mix-blend-mode: overlay;
+    }
+
+    /* ── BG Mesh de color ── */
+    .bg-mesh {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 5% 10%, rgba(245,197,24,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 95% 90%, rgba(245,197,24,0.03) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(16,185,129,0.015) 0%, transparent 70%);
+    }
+
+    /* ══════════════════════════════════════
+       TICKER ANIMADO SUPERIOR
+    ══════════════════════════════════════ */
+    .ticker-wrap {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200; height: var(--ticker-h);
+      background: var(--amber);
+      display: flex; align-items: center; overflow: hidden;
+      box-shadow: 0 2px 20px rgba(245,197,24,0.35);
+    }
+    .ticker-badge {
+      font-family: var(--font-disp);
+      font-size: 14px; letter-spacing: 2px; color: var(--bg);
+      padding: 0 16px; height: 100%;
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap; border-right: 2px solid rgba(0,0,0,0.15);
+      min-width: fit-content; flex-shrink: 0;
+    }
+    .ticker-live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--red); animation: blink-dot 1.2s step-start infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink-dot { 0%,49%{opacity:1} 50%,100%{opacity:0.2} }
+    .ticker-overflow { overflow: hidden; flex: 1; display: flex; }
+    .ticker-track {
+      display: flex; animation: ticker-scroll 280s linear infinite; white-space: nowrap;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track span {
+      font-family: var(--font-cond);
+      font-size: 11px; color: var(--bg); padding: 0 32px; font-weight: 700; letter-spacing: 1.5px;
+    }
+    @keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ══════════════════════════════════════
+       PAGE WRAPPER
+    ══════════════════════════════════════ */
+    .page {
+      position: relative; z-index: 1;
+      padding-top: var(--ticker-h);
+      max-width: 1400px; margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════
+       HEADER PRINCIPAL
+    ══════════════════════════════════════ */
+    .station-header {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; padding: 22px 36px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(15,15,20,0.98) 0%, rgba(10,10,10,0.85) 100%);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: var(--ticker-h); z-index: 100;
+    }
+
+    /* Bloque izquierdo — logo + badges */
+    .header-left { display: flex; flex-direction: column; gap: 3px; }
+    .station-logo {
+      font-family: var(--font-disp);
+      font-size: clamp(24px, 3.5vw, 48px); letter-spacing: 4px; line-height: 1;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 60%, var(--amber3) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .header-badge {
+      display: inline-block;
+      font-family: var(--font-cond); font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 3px; width: fit-content;
+      background: rgba(245,197,24,0.08); border: 1px solid var(--amber4); color: var(--amber);
+      margin-top: 2px;
+    }
+    .header-tagline {
+      font-family: var(--font-mono); font-size: var(--fs-xs);
+      letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-top: 2px;
+    }
+
+    /* Centro — ON AIR badge pulsante */
+    .onair-center { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .onair-pulse {
+      width: 76px; height: 76px; border-radius: 50%;
+      border: 2px solid var(--red); position: relative;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 22px rgba(239,68,68,0.2);
+    }
+    .onair-pulse::before {
+      content:''; position:absolute; inset:-10px; border-radius:50%;
+      border:1.5px solid var(--red); opacity:0;
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+    .onair-pulse::after {
+      content:''; position:absolute; inset:-18px; border-radius:50%;
+      border:1px solid var(--red); opacity:0;
+      animation: pulse-ring 2.4s ease-out infinite 0.5s;
+    }
+    @keyframes pulse-ring { 0%{transform:scale(0.9);opacity:0.5} 100%{transform:scale(1.3);opacity:0} }
+    .onair-inner {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, #991b1b, var(--red));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 11px; letter-spacing: 2px; color: #fff;
+      animation: flicker-red 2s step-start infinite;
+      box-shadow: 0 0 12px rgba(239,68,68,0.4);
+    }
+    @keyframes flicker-red { 0%,47%,52%,100%{opacity:1} 48%,51%{opacity:0.5} }
+    .onair-label {
+      font-family: var(--font-cond); font-size: 10px; letter-spacing: 3px;
+      color: var(--red); font-weight: 700; text-transform: uppercase;
+    }
+
+    /* Derecha — frecuencia + reloj */
+    .header-right { text-align: right; }
+    .freq-number {
+      font-family: var(--font-disp);
+      font-size: clamp(20px, 2.6vw, 40px); color: var(--amber2); letter-spacing: 3px; line-height: 1;
+    }
+    .freq-band {
+      font-family: var(--font-cond); font-size: 10px; letter-spacing: 4px;
+      color: var(--muted); margin-top: 4px; text-transform: uppercase;
+    }
+    .freq-clock {
+      font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted2); margin-top: 6px;
+    }
+
+    /* ══════════════════════════════════════
+       NAVEGACIÓN — TABS PRINCIPALES
+    ══════════════════════════════════════ */
+    .nav-tabs {
+      display: flex; border-bottom: 1px solid var(--border);
+      background: rgba(15,15,20,0.9); backdrop-filter: blur(8px);
+      overflow-x: auto; scrollbar-width: none;
+      position: sticky; top: calc(var(--ticker-h) + 86px); z-index: 90;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      font-family: var(--font-cond);
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 12px 22px; color: var(--muted);
+      border-bottom: 2px solid transparent; border-top: none; border-left: none; border-right: none;
+      cursor: pointer; white-space: nowrap; transition: all 0.2s ease; background: none;
+    }
+    .nav-tab:hover { color: var(--amber2); }
+    .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+    /* ══════════════════════════════════════
+       TAB PANELS
+    ══════════════════════════════════════ */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ══════════════════════════════════════
+       MINI PLAYER
+    ══════════════════════════════════════ */
+    .mini-player {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-left: 3px solid var(--amber); border-radius: 10px;
+      padding: 20px 24px; margin: 24px 36px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .mini-player-header {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    .mini-player-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+      animation: blink-dot 1.2s step-start infinite;
+      box-shadow: 0 0 8px rgba(239,68,68,0.5);
+    }
+    .mini-player-label {
+      font-family: var(--font-cond); font-size: 13px; font-weight: 700;
+      letter-spacing: 3px; color: var(--amber); text-transform: uppercase;
+    }
+    .mini-player-desc { font-size: var(--fs-xs); color: var(--muted); letter-spacing: 1px; }
+
+    /* Audio nativo — el navegador pone sus controles */
+    .mini-player audio { width: 100%; height: 36px; }
+
+    .mini-player-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .player-ext-link {
+      font-family: var(--font-cond); font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--amber4);
+      text-decoration: none; border: 1px solid var(--border2);
+      padding: 6px 14px; border-radius: 4px; transition: all 0.2s;
+    }
+    .player-ext-link:hover { border-color: var(--amber); color: var(--amber); background: var(--glow-a); }
+
+    /* ══════════════════════════════════════
+       SECCIONES GENÉRICAS
+    ══════════════════════════════════════ */
+    .section { padding: 36px; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-title {
+      font-family: var(--font-disp); font-size: clamp(22px, 3vw, 40px);
+      letter-spacing: 3px; line-height: 1; margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-sub {
+      font-family: var(--font-cond); font-size: 11px; letter-spacing: 4px;
+      color: var(--muted); text-transform: uppercase; margin-bottom: 28px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--amber4), transparent);
+      margin: 28px 0;
+    }
+
+    /* ══════════════════════════════════════
+       MANIFIESTO
+    ══════════════════════════════════════ */
+    .manifiesto-text {
+      font-family: var(--font-cond); font-size: 16px; line-height: 1.9;
+      color: var(--white); max-width: 820px; letter-spacing: 0.3px;
+    }
+    .manifiesto-text strong { color: var(--amber); font-weight: 700; }
+    .manifiesto-text em { color: var(--amber3); font-style: italic; }
+    .manifiesto-text p { margin-bottom: 16px; }
+    .manifiesto-text p:last-child { margin-bottom: 0; }
+
+    .manifiesto-quote {
+      border-left: 4px solid var(--amber); padding-left: 20px;
+      margin: 24px 0; font-size: 17px; font-style: italic;
+      font-family: var(--font-cond); color: var(--amber3); line-height: 1.7; opacity: 0.9;
+    }
+
+    /* ══════════════════════════════════════
+       V1 vs V2 — DOS COLUMNAS
+    ══════════════════════════════════════ */
+    .v1v2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+    .v-card {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: 10px; padding: 24px; position: relative; overflow: hidden;
+    }
+    .v-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    }
+    .v1-card::before { background: linear-gradient(90deg, var(--amber), var(--amber2)); }
+    .v2-card::before { background: linear-gradient(90deg, var(--green), #06b6d4); }
+
+    .v-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .v-version { font-family: var(--font-disp); font-size: 46px; line-height: 1; }
+    .v1-card .v-version { color: var(--amber); }
+    .v2-card .v-version { color: var(--green); }
+    .v-card-meta { display: flex; flex-direction: column; gap: 3px; }
+    .v-card-title { font-family: var(--font-syne); font-size: 15px; font-weight: 700; color: var(--white); }
+    .v-card-status { font-family: var(--font-cond); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
+    .v1-card .v-card-status { color: var(--amber4); }
+    .v2-card .v-card-status { color: var(--green); opacity: 0.7; }
+
+    .v-items { display: flex; flex-direction: column; gap: 10px; }
+    .v-item { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: 1.6; }
+    .v-item-bullet { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .v-item-text { color: var(--muted); }
+    .v-item-text strong { color: var(--white); }
+
+    /* ══════════════════════════════════════
+       CARDS GRID GENÉRICO
+    ══════════════════════════════════════ */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+    }
+    .info-card {
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: 10px; padding: 20px;
+      position: relative; overflow: hidden; transition: all 0.3s;
+    }
+    .info-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, var(--amber), var(--amber2));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .info-card:hover { border-color: var(--amber4); background: var(--amber5); }
+    .info-card:hover::before { transform: scaleX(1); }
+    .card-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+    .card-title { font-family: var(--font-syne); font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .card-desc { font-size: var(--fs-xs); color: var(--muted); line-height: 1.8; }
+
+    /* ══════════════════════════════════════
+       ABOUT GRID (QUÉ ES BRM)
+    ══════════════════════════════════════ */
+    .about-grid { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: start; }
+    .about-text { font-family: var(--font-cond); font-size: 15px; line-height: 1.9; color: var(--muted); margin-bottom: 16px; }
+    .about-text strong { color: var(--white); }
+    .about-text em { color: var(--amber3); }
+
+    .about-sidebar { background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 20px; }
+    .sidebar-title {
+      font-family: var(--font-disp); font-size: 13px; letter-spacing: 3px;
+      color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+      text-transform: uppercase;
+    }
+    .sidebar-line { flex: 1; height: 1px; background: var(--border2); }
+    .sidebar-section { margin-bottom: 22px; }
+    .sidebar-section:last-child { margin-bottom: 0; }
+
+    .info-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 0; border-bottom: 1px solid rgba(34,34,66,0.4);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-family: var(--font-cond); font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    .info-val { color: var(--white); font-weight: 600; font-size: var(--fs-xs); text-align: right; }
+
+    /* ══════════════════════════════════════
+       PROGRAMAS
+    ══════════════════════════════════════ */
+    .programs-grid { display: flex; flex-direction: column; gap: 12px; }
+    .program-card {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px;
+      padding: 18px 20px; display: grid; grid-template-columns: 56px 1fr auto;
+      gap: 16px; align-items: center; transition: all 0.2s;
+    }
+    .program-card:hover { border-color: var(--amber4); background: var(--amber5); }
+    .program-emoji { font-size: 30px; text-align: center; line-height: 1; }
+    .program-info { display: flex; flex-direction: column; gap: 4px; }
+    .program-name { font-family: var(--font-syne); font-size: 14px; font-weight: 700; color: var(--white); }
+    .program-desc { font-size: var(--fs-xs); color: var(--muted); line-height: 1.6; }
+    .program-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
+    .ptag {
+      font-family: var(--font-cond); font-size: 9px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
+      background: var(--bg4); border: 1px solid var(--border2); color: var(--muted);
+    }
+    .prog-status {
+      font-family: var(--font-cond); font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px; border-radius: 4px;
+      white-space: nowrap; align-self: flex-start;
+    }
+    .status-live { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+    .status-soon { background: rgba(245,197,24,0.1); color: var(--amber); border: 1px solid var(--amber4); }
+    .status-idea { background: var(--bg4); color: var(--muted); border: 1px solid var(--border2); }
+
+    /* ══════════════════════════════════════
+       FORMULARIOS — SUB-TABS
+    ══════════════════════════════════════ */
+    .form-tabs-wrap {
+      display: flex; border-bottom: 1px solid var(--border2); margin-bottom: 28px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .form-tabs-wrap::-webkit-scrollbar { display: none; }
+    .form-tab {
+      font-family: var(--font-cond); font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; padding: 10px 20px; color: var(--muted);
+      border-bottom: 2px solid transparent; border-top: none; border-left: none; border-right: none;
+      cursor: pointer; white-space: nowrap; background: none; transition: all 0.2s;
+    }
+    .form-tab:hover { color: var(--amber2); }
+    .form-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+    .form-panel { display: none; }
+    .form-panel.active { display: block; }
+
+    /* ── Estilos de los formularios ── */
+    .form-intro {
+      font-family: var(--font-cond); font-size: 14px; color: var(--muted);
+      line-height: 1.9; margin-bottom: 24px; max-width: 640px;
+    }
+    .brm-form { display: flex; flex-direction: column; gap: 18px; max-width: 680px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-family: var(--font-cond); font-size: 10px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 5px;
+      padding: 10px 14px; font-family: var(--font-mono); font-size: var(--fs-sm);
+      color: var(--white); outline: none; transition: all 0.2s; resize: vertical;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--amber); box-shadow: 0 0 10px rgba(245,197,24,0.08);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted2); }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--bg3); color: var(--white); }
+    .form-group textarea { min-height: 100px; }
+
+    .form-hint { font-size: var(--fs-xs); color: var(--muted2); letter-spacing: 0.5px; line-height: 1.7; }
+
+    .btn-submit {
+      padding: 13px 28px; border-radius: 6px; cursor: pointer; border: none;
+      font-family: var(--font-cond); font-size: 13px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; transition: all 0.25s;
+      background: linear-gradient(135deg, var(--amber), var(--amber2));
+      color: var(--bg); box-shadow: 0 0 20px rgba(245,197,24,0.18); align-self: flex-start;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(245,197,24,0.32); }
+    .btn-submit:active { transform: scale(0.98); }
+
+    /* ══════════════════════════════════════
+       FLUJO TÉCNICO (código)
+    ══════════════════════════════════════ */
+    .code-flow {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px;
+      padding: 22px; font-family: var(--font-mono); font-size: var(--fs-xs);
+      color: var(--muted); line-height: 2.4; max-width: 560px;
+    }
+    .code-flow .cf-node { color: var(--amber); }
+    .code-flow .cf-ok { color: var(--green); }
+    .code-flow .cf-arr { color: var(--muted2); }
+
+    /* ══════════════════════════════════════
+       GÉNEROS TAGS
+    ══════════════════════════════════════ */
+    .genre-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .gtag {
+      font-family: var(--font-cond); font-size: 11px; letter-spacing: 1.5px;
+      padding: 6px 14px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
+    }
+    .gtag.hot { border: 1px solid var(--amber4); color: var(--amber2); background: rgba(245,197,24,0.04); }
+    .gtag.cool { border: 1px solid var(--border2); color: var(--muted); background: transparent; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid var(--border); padding: 18px 36px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      background: rgba(10,10,10,0.97); backdrop-filter: blur(10px);
+    }
+    .footer-brand {
+      font-family: var(--font-disp); font-size: 14px; letter-spacing: 3px;
+      background: linear-gradient(135deg, var(--amber), var(--amber2));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .footer-legal { font-size: var(--fs-xs); color: var(--muted2); margin-top: 2px; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-link {
+      font-family: var(--font-cond); font-size: 11px; color: var(--amber4);
+      text-decoration: none; letter-spacing: 1.5px; font-weight: 700;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--amber2); }
+    .footer-copy { font-size: var(--fs-xs); color: var(--muted2); letter-spacing: 1px; text-align: right; }
+
+    /* ══════════════════════════════════════
+       TOAST NOTIFICACIONES
+    ══════════════════════════════════════ */
+    .toast-wrap {
+      position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+      display: flex; flex-direction: column; gap: 8px; pointer-events: none;
+    }
+    .toast {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 7px;
+      padding: 10px 14px; font-size: var(--fs-xs); font-family: var(--font-mono);
+      color: var(--white); letter-spacing: 1px; box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+      opacity: 0; transform: translateY(8px); animation: toast-in 0.3s ease forwards; max-width: 280px;
+    }
+    @keyframes toast-in { to{opacity:1;transform:translateY(0)} }
+    .toast.out { animation: toast-out 0.3s ease forwards; }
+    @keyframes toast-out { to{opacity:0;transform:translateY(8px)} }
+
+    /* ══════════════════════════════════════
+       REVEAL ANIMATION
+    ══════════════════════════════════════ */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — MOBILE
+    ══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .station-header { grid-template-columns: 1fr auto; padding: 16px 20px; }
+      .header-right { display: none; }
+      .section { padding: 24px 20px; }
+      .mini-player { margin: 16px 20px; }
+      .v1v2-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .program-card { grid-template-columns: 40px 1fr; }
+      .prog-status { display: none; }
+      .site-footer { padding: 14px 20px; flex-direction: column; text-align: center; }
+      .footer-copy { text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .ticker-badge { display: none; }
+      .station-logo { font-size: 22px; }
+      .onair-pulse { width: 62px; height: 62px; }
+      .onair-inner { width: 44px; height: 44px; font-size: 10px; }
+      .nav-tab { padding: 10px 14px; font-size: 10px; letter-spacing: 2px; }
+      .footer-links { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Efectos visuales de fondo -->
+  <div class="scanlines"></div>
+  <div class="bg-mesh"></div>
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TICKER ANIMADO SUPERIOR
+  ═══════════════════════════════════════════════════════ -->
+  <div class="ticker-wrap">
+    <div class="ticker-badge">
+      <span class="ticker-live-dot"></span>
+      📻 BRM · INFO
+    </div>
+    <div class="ticker-overflow">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- ═══════════════════════════════════════════════════════
+         HEADER — TÍTULO + ON AIR + FRECUENCIA
+    ═══════════════════════════════════════════════════════ -->
+    <header class="station-header">
+      <div class="header-left">
+        <div class="station-logo">BUBATRONIK_BRM</div>
+        <div class="header-badge">INFO &amp; PROGRAMAS</div>
+        <div class="header-tagline">WorldMOS · AguaFlow · DPN-Game · © 2026</div>
+      </div>
+
+      <!-- Dot rojo pulsante ON AIR -->
+      <div class="onair-center">
+        <div class="onair-pulse">
+          <div class="onair-inner">LIVE</div>
+        </div>
+        <div class="onair-label">▶ ON AIR</div>
+      </div>
+
+      <div class="header-right">
+        <div class="freq-number">666.333</div>
+        <div class="freq-band">Open Format · Radio Independiente</div>
+        <div class="freq-clock" id="clock">--:-- · --/--/----</div>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════
+         NAVEGACIÓN — 6 TABS PRINCIPALES
+    ═══════════════════════════════════════════════════════ -->
+    <nav class="nav-tabs" role="tablist" aria-label="Secciones de BRM Info">
+      <button class="nav-tab active" data-tab="inicio"     role="tab" aria-selected="true">🏠 INICIO</button>
+      <button class="nav-tab"        data-tab="queesbrm"   role="tab">📡 QUÉ ES BRM</button>
+      <button class="nav-tab"        data-tab="v1actual"   role="tab">🎵 V1 ACTUAL</button>
+      <button class="nav-tab"        data-tab="visionv2"   role="tab">🚀 VISIÓN V2</button>
+      <button class="nav-tab"        data-tab="programas"  role="tab">📋 PROGRAMAS</button>
+      <button class="nav-tab"        data-tab="colabora"   role="tab">🤝 COLABORA</button>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: INICIO
+         Contiene: player mini + manifiesto + V1 vs V2
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel active" id="tab-inicio">
+
+      <!-- PLAYER MINI CON DOT ROJO PULSANTE -->
+      <div class="mini-player reveal">
+        <div class="mini-player-header">
+          <div class="mini-player-dot"></div>
+          <div>
+            <div class="mini-player-label">📻 Radio en Directo — BUBATRONIK_BRM</div>
+            <div class="mini-player-desc">128 kbps · MP3 · Open Format · Sant Salvador, Tarragona</div>
+          </div>
+        </div>
+
+        <!-- AUDIO HTML5 nativo — URL del stream según el prompt -->
+        <audio controls preload="none" aria-label="Stream BUBATRONIK_BRM Radio">
+          <source src="http://bubatronik.radiostream321.com/" type="audio/mpeg">
+          Tu navegador no soporta audio HTML5. Usa los links externos de abajo.
+        </audio>
+
+        <!-- Links externos al stream -->
+        <div class="mini-player-links">
+          <a class="player-ext-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener" title="Abrir player nativo">🌐 RadioStream321</a>
+          <a class="player-ext-link" href="https://brm.worldmos.world" target="_blank" rel="noopener" title="Web principal BRM">🛰️ BRM Main Site</a>
+          <a class="player-ext-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener" title="Instagram de BRM">📸 Instagram</a>
+          <a class="player-ext-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" title="Sesiones en Drive">💾 Sesiones Drive</a>
+        </div>
+      </div>
+
+      <!-- MANIFIESTO -->
+      <div class="section">
+        <div class="section-title reveal">MANIFIESTO</div>
+        <div class="section-sub reveal">Radio Independiente · Sant Salvador · Para Tod@s</div>
+
+        <div class="manifiesto-quote reveal">
+          "La música no entiende de jerarquías. Del más pobre al más rico, todos sentimos lo mismo cuando la canción correcta suena en el momento justo."
+        </div>
+
+        <div class="manifiesto-text reveal">
+          <p><strong>BUBATRONIK_BRM</strong> nace desde <strong>Sant Salvador, Tarragona, Catalunya</strong> como un proyecto de radio independiente, comunitaria y cultural. Sin algoritmos que decidan lo que escuchas. Sin anuncios que interrumpan. Sin jerarquías que definan quién puede participar o quién merece escuchar.</p>
+          <p>La radio es un espacio <strong>para tod@s</strong> — tóxicos y no tóxicos, madrugadores y nocturnos, de barrio y del mundo. El único requisito para estar en la manada es querer estar. <em>La música como chimenea emocional</em>: activa recuerdos, saca lágrimas, provoca risas, crea vínculos que ningún PowerPoint de team building ha conseguido jamás.</p>
+          <p>Hay documentales, películas animadas, estudios científicos — todos dicen lo mismo que ya sabemos: <strong>la música genera bienestar</strong>. Es la herramienta de cohesión social más antigua y más efectiva que existe. Y no requiere suscripción premium, no discrimina por código postal, no está sujeta a un algoritmo que un día decide que ya no te interesa.</p>
+          <p>Esto es <strong>Open Format</strong> en su máxima expresión. No hay género prohibido, no hay artista imposible, no hay frontera musical. Si suena bien y hace bien, entra en rotación. Y lo que viene — la V2 — no es ciencia ficción ni Matrix: es evolución lógica de lo que ya funciona, con debate, conocimiento, IA y comunidad real.</p>
+          <p><em>¡AUUUAUUU! 🐺 — La manada es tod@s. La manada somos.</em></p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- V1 vs V2 dentro del INICIO -->
+        <div class="section-title reveal" style="font-size: clamp(18px, 2.5vw, 32px); margin-bottom: 6px;">V1 vs V2</div>
+        <div class="section-sub reveal">Lo que hay ahora · Lo que viene</div>
+
+        <div class="v1v2-grid reveal">
+          <!-- V1 ACTUAL -->
+          <div class="v-card v1-card">
+            <div class="v-card-header">
+              <div class="v-version">V1</div>
+              <div class="v-card-meta">
+                <div class="v-card-title">LO QUE HAY AHORA</div>
+                <div class="v-card-status">✓ Activo · Funcionando · Real</div>
+              </div>
+            </div>
+            <div class="v-items">
+              <div class="v-item"><span class="v-item-bullet">🎵</span><span class="v-item-text"><strong>Música 24/7</strong> — Stream continuo, sin pausa, sin algoritmos</span></div>
+              <div class="v-item"><span class="v-item-bullet">📀</span><span class="v-item-text"><strong>709+ tracks</strong> curados manualmente — géneros variados Open Format</span></div>
+              <div class="v-item"><span class="v-item-bullet">🎛️</span><span class="v-item-text"><strong>Sesiones Numeradas</strong> (21+) de 4–6h, grabadas, acceso libre Drive</span></div>
+              <div class="v-item"><span class="v-item-bullet">☀️</span><span class="v-item-text"><strong>Vermut Dominical</strong> — cada domingo 12h, ritual obligatorio de la manada</span></div>
+              <div class="v-item"><span class="v-item-bullet">🌐</span><span class="v-item-text"><strong>brm.worldmos.world</strong> — web completa con player, playlist, info</span></div>
+              <div class="v-item"><span class="v-item-bullet">📡</span><span class="v-item-text"><strong>Shoutcast 128kbps</strong> via Cloudflare Worker proxy HTTPS</span></div>
+              <div class="v-item"><span class="v-item-bullet">💾</span><span class="v-item-text"><strong>Archivo libre</strong> en Google Drive, sin suscripciones ni registro</span></div>
+            </div>
+          </div>
+
+          <!-- V2 VISIÓN -->
+          <div class="v-card v2-card">
+            <div class="v-card-header">
+              <div class="v-version">V2</div>
+              <div class="v-card-meta">
+                <div class="v-card-title">LO QUE VIENE</div>
+                <div class="v-card-status">🚧 En desarrollo · No tan ficticio</div>
+              </div>
+            </div>
+            <div class="v-items">
+              <div class="v-item"><span class="v-item-bullet">🎙️</span><span class="v-item-text"><strong>Debates y programas</strong> — no solo música, también ideas y conversación</span></div>
+              <div class="v-item"><span class="v-item-bullet">📰</span><span class="v-item-text"><strong>Noticias por zonas</strong> — Camp de Tarragona, Cataluña y lo relevante</span></div>
+              <div class="v-item"><span class="v-item-bullet">🤖</span><span class="v-item-text"><strong>IA integrada</strong> — resumen de noticias, generación de contenido automático</span></div>
+              <div class="v-item"><span class="v-item-bullet">📱</span><span class="v-item-text"><strong>Automatización</strong> Telegram, WhatsApp, Facebook — la manada conectada</span></div>
+              <div class="v-item"><span class="v-item-bullet">🖼️</span><span class="v-item-text"><strong>Fotos → canciones</strong> — IA genera audio a partir de imágenes del barrio</span></div>
+              <div class="v-item"><span class="v-item-bullet">🌍</span><span class="v-item-text"><strong>Comunidad ampliada</strong> — más allá del barrio, sin perder las raíces</span></div>
+              <div class="v-item"><span class="v-item-bullet">⚙️</span><span class="v-item-text"><strong>N8N / Make</strong> — automatización completa de todos los flujos</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-inicio -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: QUÉ ES BRM
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-queesbrm">
+      <div class="section">
+        <div class="section-title reveal">QUÉ ES BRM</div>
+        <div class="section-sub reveal">BUBATRONIK · Radio Comunitaria · Proyecto · Comunidad</div>
+
+        <div class="about-grid reveal">
+          <!-- Texto principal -->
+          <div>
+            <div class="about-text">
+              <p><strong>BRM es BUBATRONIK RADIO</strong>, un proyecto de radio independiente online nacido en <strong>Sant Salvador, Tarragona</strong>, creado y mantenido por <strong>Rubén Rodríguez Francisco</strong> — también conocido como DEVBU93, LOB@-Pulpo, DRDB y BUBA.</p>
+            </div>
+            <div class="about-text">
+              <p>No es una radio de fondo para poner mientras comes. Es un <strong>espacio vivo</strong> donde la música actúa como <em>chimenea emocional</em> — un punto de encuentro comunitario que no requiere que compartas la misma ideología, código postal ni nivel de tóxico. La música es el pegamento, el vermut es el ritual, y la manada somos todos.</p>
+            </div>
+            <div class="about-text">
+              <p>BRM funciona dentro del sistema <strong>WORLD-MUNDO OS</strong>, un entorno de trabajo y creación personal que integra proyectos como AguaFlow, DPN-Game y Frecuencia Sant Salvador como nodos conectados de una misma visión de bienestar, tecnología y comunidad real.</p>
+            </div>
+            <div class="about-text">
+              <p><strong>La Manada Salvaje</strong> es la comunidad: sin jerarquías formales, sin requisitos de entrada, con un único código — a sonreír, divertirse y aportar cuando puedas. El grito de la manada es <strong>¡AUUUAUUU! 🐺</strong></p>
+            </div>
+
+            <div class="divider"></div>
+            <div class="section-sub" style="margin-bottom: 16px;">TECNOLOGÍA QUE LO HACE POSIBLE</div>
+            <div class="cards-grid">
+              <div class="info-card">
+                <span class="card-icon">📡</span>
+                <div class="card-title">Stream Shoutcast</div>
+                <div class="card-desc">Protocolo ICY/Shoutcast a 128kbps MP3 stereo vía listen2myradio.com. Accesible 24/7 desde cualquier dispositivo con navegador.</div>
+              </div>
+              <div class="info-card">
+                <span class="card-icon">☁️</span>
+                <div class="card-title">Cloudflare Worker</div>
+                <div class="card-desc">Proxy HTTPS propio para resolver mixed-content. Permite escuchar el stream HTTP en webs HTTPS sin errores de seguridad del navegador.</div>
+              </div>
+              <div class="info-card">
+                <span class="card-icon">🐙</span>
+                <div class="card-title">GitHub Pages + CI/CD</div>
+                <div class="card-desc">Hosting gratuito con despliegue automático vía GitHub Actions. Cada push al repo despliega la web actualizada en segundos.</div>
+              </div>
+              <div class="info-card">
+                <span class="card-icon">🌐</span>
+                <div class="card-title">GoDaddy DNS</div>
+                <div class="card-desc">worldmos.world gestionado en GoDaddy con subdominios CNAME: brm.worldmos.world (radio principal) y brm.worldmos.info (info y programas).</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar de datos -->
+          <div class="about-sidebar">
+            <div class="sidebar-section">
+              <div class="sidebar-title">🐺 NODO PRINCIPAL <div class="sidebar-line"></div></div>
+              <div class="info-row"><span class="info-label">Creador</span><span class="info-val">Rubén · BRM / DEVBU93</span></div>
+              <div class="info-row"><span class="info-label">Sistema</span><span class="info-val">WORLD-MUNDO OS</span></div>
+              <div class="info-row"><span class="info-label">Nodo</span><span class="info-val">Lob@-Pulpo × ROCE SYNC</span></div>
+              <div class="info-row"><span class="info-label">Alias</span><span class="info-val">BUBA · DRDB · LOB@-PULPO</span></div>
+              <div class="info-row"><span class="info-label">Sede</span><span class="info-val">📍 Sant Salvador, Tarragona</span></div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-title">📻 RADIO STATS <div class="sidebar-line"></div></div>
+              <div class="info-row"><span class="info-label">Tracks</span><span class="info-val">709+ en colección</span></div>
+              <div class="info-row"><span class="info-label">Sesiones</span><span class="info-val">21+ grabadas</span></div>
+              <div class="info-row"><span class="info-label">Formato</span><span class="info-val">Open Format</span></div>
+              <div class="info-row"><span class="info-label">Stream</span><span class="info-val">128 kbps MP3</span></div>
+              <div class="info-row"><span class="info-label">Frecuencia</span><span class="info-val">666.333 Digital</span></div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-title">⚖️ LEGAL <div class="sidebar-line"></div></div>
+              <div class="info-row"><span class="info-label">Derechos</span><span class="info-val">SGAE / AGEDI</span></div>
+              <div class="info-row"><span class="info-label">Privacidad</span><span class="info-val">RGPD compliant</span></div>
+              <div class="info-row"><span class="info-label">Tipo</span><span class="info-val">Radio Comunitaria</span></div>
+              <div class="info-row"><span class="info-label">Tracking</span><span class="info-val">Mínimo. Sin ads.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /tab-queesbrm -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: V1 ACTUAL
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-v1actual">
+      <div class="section">
+        <div class="section-title reveal">V1 · LO QUE HAY</div>
+        <div class="section-sub reveal">Estado actual · Activo · Funcionando · Real</div>
+
+        <div class="cards-grid reveal" style="margin-bottom: 32px;">
+          <div class="info-card">
+            <span class="card-icon">🎵</span>
+            <div class="card-title">Música 24/7 Open Format</div>
+            <div class="card-desc">Stream continuo sin pausa, sin jerarquía de géneros. Hip Hop, Soul, Techno, Eurodance, Blues, Rock, Afrobeats, Rap Español, Folk, Neo Soul — lo que pida el momento.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📀</span>
+            <div class="card-title">709+ Tracks en Colección</div>
+            <div class="card-desc">Curada track a track por DEVBU93. Desde Carlos Vecino hasta Wu Tang Clan, de Kase.O a Charlotte de Witte, de Avicii a Erykah Badu. Sin algoritmo de por medio.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🎛️</span>
+            <div class="card-title">21+ Sesiones Numeradas</div>
+            <div class="card-desc">Sesiones largas de 4-6 horas, multigenero, sin pausa. La Sesión 3 marcó el récord: 4.96 GB de música ininterrumpida. Todas en Google Drive, acceso libre sin cuenta.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">☀️</span>
+            <div class="card-title">Vermut Dominical</div>
+            <div class="card-desc">Cada domingo a las 12h, ritual sagrado de la manada. Vermut obligatorio. Música de domingo: clásicos, funk, soul, buenas vibraciones. No es opcional — es la ley.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🌐</span>
+            <div class="card-title">Web Principal Completa</div>
+            <div class="card-desc">brm.worldmos.world con player canvas, playlist de 709+ tracks buscable, filtros por género, visualizador audio, Media Session API, tabs de información completa.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">💾</span>
+            <div class="card-title">Archivo Drive Libre</div>
+            <div class="card-desc">Todas las sesiones grabadas en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones. Acceso libre para toda La Manada Salvaje.</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-sub" style="margin-bottom: 18px;">GÉNEROS EN ROTACIÓN ACTIVA</div>
+        <div class="genre-cloud reveal">
+          <span class="gtag hot">Hip Hop</span>
+          <span class="gtag hot">Soul</span>
+          <span class="gtag hot">Techno</span>
+          <span class="gtag hot">Deep House</span>
+          <span class="gtag hot">Eurodance</span>
+          <span class="gtag hot">Afrobeats</span>
+          <span class="gtag hot">Rap Español</span>
+          <span class="gtag hot">Electronic</span>
+          <span class="gtag cool">Neo Soul</span>
+          <span class="gtag cool">Blues</span>
+          <span class="gtag cool">Rock</span>
+          <span class="gtag cool">Folk</span>
+          <span class="gtag cool">Hardstyle</span>
+          <span class="gtag cool">Funk</span>
+          <span class="gtag hot">Open Format ∞</span>
+        </div>
+      </div>
+    </div><!-- /tab-v1actual -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: VISIÓN V2
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-visionv2">
+      <div class="section">
+        <div class="section-title reveal">VISIÓN V2</div>
+        <div class="section-sub reveal">Lo que viene · En construcción · No es Matrix · Es posible</div>
+
+        <div class="about-text reveal" style="max-width: 700px; margin-bottom: 32px; font-family: var(--font-cond); font-size: 15px; line-height: 1.9; color: var(--muted);">
+          La V2 no es ciencia ficción. Es una evolución lógica de lo que ya funciona, añadiendo capas de contenido, comunidad y tecnología que transforman BRM de <strong style="color: var(--white);">"radio de música"</strong> a <strong style="color: var(--white);">"plataforma de radio comunitaria independiente"</strong> con debates, noticias por zona e inteligencia artificial al servicio de la gente.
+        </div>
+
+        <div class="cards-grid reveal">
+          <div class="info-card">
+            <span class="card-icon">🎙️</span>
+            <div class="card-title">Debates y Programas</div>
+            <div class="card-desc">Bloques programados de debate — temas locales, conocimiento, noticias relevantes. La manada que quiera hablar, habla. Sin censura previa, con respeto mínimo y aportación real.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📰</span>
+            <div class="card-title">Noticias por Zonas</div>
+            <div class="card-desc">IA resume noticias del Camp de Tarragona, Cataluña, España y mundo cada pocas horas. Información relevante por zona, sin bulo, con fuente verificable cuando es posible.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🤖</span>
+            <div class="card-title">IA Integrada (CenteIA)</div>
+            <div class="card-desc">Automatización con herramientas de IA — Perplexity, Claude, otros. Generación de contenido, resúmenes automáticos, programación de bloques. Tecnología al servicio de la comunidad.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">📱</span>
+            <div class="card-title">Canales Automáticos</div>
+            <div class="card-desc">Bots para Telegram, WhatsApp, Facebook. "🔴 ON AIR + track actual + noticia del día + link". La manada se informa sin tener que abrir la web. Alcance sin esfuerzo extra.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">🖼️</span>
+            <div class="card-title">Fotos → Canciones</div>
+            <div class="card-desc">IA generativa de audio desde imágenes. Subes una foto del barrio, del vermut, de la manada — y la radio genera una pieza musical inspirada. Experimental pero técnicamente posible.</div>
+          </div>
+          <div class="info-card">
+            <span class="card-icon">⚙️</span>
+            <div class="card-title">Automatización Total</div>
+            <div class="card-desc">N8N o Make.com conectando todo el ecosistema: stream → web → Drive → Telegram → Instagram → Facebook. Publicación automática, scheduling inteligente, backups.</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-sub" style="margin-bottom: 16px;">FLUJO AUTOMÁTICO PREVISTO (V2)</div>
+        <div class="code-flow reveal">
+          <span class="cf-node">[Noticias Tarragona / Cataluña / Mundo]</span><br>
+          <span class="cf-arr">&nbsp;&nbsp;↓ IA busca cada 2h — Perplexity / Claude API</span><br>
+          <span class="cf-node">[Resumen: 3 noticias clave por zona]</span><br>
+          <span class="cf-arr">&nbsp;&nbsp;↓ Generación de bloque de audio TTS</span><br>
+          <span class="cf-node">[Bloque de radio: noticia leída + música]</span><br>
+          <span class="cf-arr">&nbsp;&nbsp;↓ Scheduling automático en horario definido</span><br>
+          <span class="cf-node">[ON AIR → Stream → Web → Telegram → Instagram]</span><br>
+          <span class="cf-arr">&nbsp;&nbsp;↓ Ciclo cada 2–4 horas</span><br>
+          <span class="cf-ok">✓ Manada informada, manada conectada, manada activa</span>
+        </div>
+      </div>
+    </div><!-- /tab-visionv2 -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: PROGRAMAS
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-programas">
+      <div class="section">
+        <div class="section-title reveal">PROGRAMAS</div>
+        <div class="section-sub reveal">Parrilla Actual y Futura · Propuestas Bienvenidas</div>
+
+        <div class="about-text reveal" style="max-width: 680px; margin-bottom: 28px; font-family: var(--font-cond); font-size: 14px; line-height: 1.9; color: var(--muted);">
+          Aquí está la parrilla — activa, en desarrollo y en idea. Si tienes una propuesta de programa, ve a la pestaña <strong style="color: var(--amber);">COLABORA</strong> y rellena el formulario. Todo tipo de formato tiene cabida si aporta algo real.
+        </div>
+
+        <div class="programs-grid reveal">
+
+          <div class="program-card">
+            <div class="program-emoji">☀️</div>
+            <div class="program-info">
+              <div class="program-name">VERMUT BUBATRONIK</div>
+              <div class="program-desc">El ritual sagrado de la comunidad. Música de domingo — clásicos, funk, soul, buenas vibraciones y vermut obligatorio. En vivo desde Sant Salvador cada semana.</div>
+              <div class="program-tags">
+                <span class="ptag">Domingos 12h</span><span class="ptag">En vivo</span><span class="ptag">Música</span><span class="ptag">Ritual</span>
+              </div>
+            </div>
+            <div class="prog-status status-live">🔴 Activo</div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-emoji">🎛️</div>
+            <div class="program-info">
+              <div class="program-name">SESIONES NUMERADAS</div>
+              <div class="program-desc">Sesiones largas de 4 a 6 horas, multigenero, sin pausa, sin etiquetas. Open Format puro. Grabadas y disponibles en Drive. La Sesión 3: 4.96 GB de música no-stop.</div>
+              <div class="program-tags">
+                <span class="ptag">Variable</span><span class="ptag">Grabadas</span><span class="ptag">Drive</span><span class="ptag">4–6h</span>
+              </div>
+            </div>
+            <div class="prog-status status-live">🔴 Activo</div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-emoji">📰</div>
+            <div class="program-info">
+              <div class="program-name">NOTÍCIES DE BARRI</div>
+              <div class="program-desc">Bloque informativo localizado: noticias del Camp de Tarragona, Cataluña y lo que afecta al barrio real. Sin bulo, con fuente cuando es posible. Con o sin IA según disponibilidad.</div>
+              <div class="program-tags">
+                <span class="ptag">Noticias</span><span class="ptag">Zona</span><span class="ptag">V2</span><span class="ptag">IA</span>
+              </div>
+            </div>
+            <div class="prog-status status-soon">🟡 Próximo</div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-emoji">🎙️</div>
+            <div class="program-info">
+              <div class="program-name">EL DEBATE DE LA MANADA</div>
+              <div class="program-desc">Espacio de debate libre. Un tema, varias voces, formato radio. Tóxicos y no tóxicos siempre que el objetivo sea aportar algo. Puede ser semanal o especial según disponibilidad.</div>
+              <div class="program-tags">
+                <span class="ptag">Debate</span><span class="ptag">Comunidad</span><span class="ptag">V2</span><span class="ptag">Proponer</span>
+              </div>
+            </div>
+            <div class="prog-status status-soon">🟡 Próximo</div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-emoji">🌍</div>
+            <div class="program-info">
+              <div class="program-name">OPEN MIC BRM</div>
+              <div class="program-desc">Espacio abierto para artistas locales, raperos, músicos, poetas, freestylers. Sin filtros de calidad mínima — si tienes algo que decir y suena, aquí cabe. Barrio primero.</div>
+              <div class="program-tags">
+                <span class="ptag">Arte</span><span class="ptag">Colaborativo</span><span class="ptag">Música</span><span class="ptag">Idea</span>
+              </div>
+            </div>
+            <div class="prog-status status-idea">💡 Idea</div>
+          </div>
+
+          <div class="program-card">
+            <div class="program-emoji">🎉</div>
+            <div class="program-info">
+              <div class="program-name">FIESTAS DE LA MANADA</div>
+              <div class="program-desc">Eventos especiales, sesiones en directo para fiesta de empresa o comunidad. Team building real con BRM como hilo conductor sonoro. Sin PowerPoints, sin facilitadores, sin Kata Bowling.</div>
+              <div class="program-tags">
+                <span class="ptag">Eventos</span><span class="ptag">Team Building</span><span class="ptag">Directo</span><span class="ptag">Especial</span>
+              </div>
+            </div>
+            <div class="prog-status status-idea">💡 Idea</div>
+          </div>
+
+        </div>
+
+        <div class="divider"></div>
+        <div class="about-text reveal" style="font-family: var(--font-cond); font-size: 14px; color: var(--muted); line-height: 1.9;">
+          ¿Tienes idea de programa? → Ve a <strong style="color: var(--amber);">COLABORA → Proponer Programa</strong>
+        </div>
+      </div>
+    </div><!-- /tab-programas -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TAB: COLABORA
+         3 sub-formularios con tabs
+    ═══════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-colabora">
+      <div class="section">
+        <div class="section-title reveal">COLABORA</div>
+        <div class="section-sub reveal">Proponer · Participar · Aportar · Enviar</div>
+
+        <!-- SUB-TABS DE FORMULARIOS -->
+        <div class="form-tabs-wrap reveal">
+          <button class="form-tab active" data-form="proponer">📋 Proponer Programa</button>
+          <button class="form-tab" data-form="colaborar">🤝 Colaborar</button>
+          <button class="form-tab" data-form="idea">💡 Enviar Idea / Noticia</button>
+        </div>
+
+        <!-- ── FORMULARIO 1: PROPONER PROGRAMA ── -->
+        <div class="form-panel active" id="form-proponer">
+          <div class="form-intro">
+            ¿Tienes idea de programa para BRM? Cuéntanosla. Música, debate, noticias, mixto, especial — todo tiene cabida si aporta algo. Sin filtros previos de calidad, con voluntad real de hacer.
+          </div>
+          <div class="brm-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-nombre">Nombre del programa *</label>
+                <input type="text" id="p-nombre" placeholder="Ej: El Vermut del Jueves" required autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label for="p-tipo">Tipo de programa *</label>
+                <select id="p-tipo" required>
+                  <option value="">-- Selecciona --</option>
+                  <option value="debate">Debate</option>
+                  <option value="noticias">Noticias / Informativo</option>
+                  <option value="musica">Música / DJ Set</option>
+                  <option value="mixto">Mixto (música + hablar)</option>
+                  <option value="especial">Especial / Evento</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="p-desc">Descripción del programa *</label>
+              <textarea id="p-desc" placeholder="Cuéntanos de qué va, el formato, el tono, la duración aproximada, qué aportaría a la manada..." required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-frecuencia">Frecuencia prevista</label>
+                <select id="p-frecuencia">
+                  <option value="">-- Opcional --</option>
+                  <option value="diario">Diario</option>
+                  <option value="semanal">Semanal</option>
+                  <option value="quincenal">Quincenal</option>
+                  <option value="mensual">Mensual</option>
+                  <option value="especial">Solo especiales</option>
+                  <option value="variable">Variable / Sin definir</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="p-zona">Zona geográfica</label>
+                <input type="text" id="p-zona" placeholder="Ej: Tarragona, Barcelona, Online...">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-contacto">Tu nombre / alias *</label>
+                <input type="text" id="p-contacto" placeholder="Nombre o alias" required>
+              </div>
+              <div class="form-group">
+                <label for="p-email">Email de contacto *</label>
+                <input type="email" id="p-email" placeholder="tu@email.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="p-mensaje">Mensaje libre / notas adicionales</label>
+              <textarea id="p-mensaje" placeholder="Cualquier cosa que quieras añadir, contexto extra, colaboradores potenciales..."></textarea>
+            </div>
+            <div class="form-hint">
+              Los campos con * son obligatorios. El botón abre tu cliente de correo (Gmail, Outlook, etc.) con todo el formulario ya formateado. Sin datos de terceros, sin servidor propio.
+            </div>
+            <button class="btn-submit" onclick="submitForm('proponer')">📤 ENVIAR PROPUESTA</button>
+          </div>
+        </div>
+
+        <!-- ── FORMULARIO 2: COLABORAR ── -->
+        <div class="form-panel" id="form-colaborar">
+          <div class="form-intro">
+            ¿Quieres formar parte de BRM de alguna forma? Hay muchos modos de colaborar: locución, técnica, música, noticias, IA, diseño, programación, comunidad. Si aportas algo útil y real, hay sitio en la manada.
+          </div>
+          <div class="brm-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-nombre">Tu nombre / alias *</label>
+                <input type="text" id="c-nombre" placeholder="Nombre o alias" required>
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email de contacto *</label>
+                <input type="email" id="c-email" placeholder="tu@email.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-rol">Rol en el que quieres colaborar *</label>
+                <select id="c-rol" required>
+                  <option value="">-- Selecciona tu rol --</option>
+                  <option value="locucion">Locución / Presentación</option>
+                  <option value="tecnica">Técnica / Sonido</option>
+                  <option value="musica">Música / DJ / Producción</option>
+                  <option value="noticias">Noticias / Redacción</option>
+                  <option value="ia">Inteligencia Artificial / Automatización</option>
+                  <option value="diseno">Diseño / Visual / Arte</option>
+                  <option value="programacion">Programación / Web / DevOps</option>
+                  <option value="comunidad">Gestión de Comunidad</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c-disponibilidad">Disponibilidad (horas/semana)</label>
+                <select id="c-disponibilidad">
+                  <option value="">-- Opcional --</option>
+                  <option value="1-2h">1–2 horas</option>
+                  <option value="3-5h">3–5 horas</option>
+                  <option value="5-10h">5–10 horas</option>
+                  <option value="+10h">+10 horas</option>
+                  <option value="variable">Variable según momento</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-zona">Zona geográfica</label>
+                <input type="text" id="c-zona" placeholder="Ej: Tarragona, Madrid, Online...">
+              </div>
+              <div class="form-group">
+                <label for="c-experiencia">Experiencia previa (si la hay)</label>
+                <input type="text" id="c-experiencia" placeholder="Breve descripción, links, portfolio...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="c-mensaje">¿Por qué quieres colaborar con BRM? *</label>
+              <textarea id="c-mensaje" placeholder="Cuéntanos qué te motiva, qué aportarías, qué esperas de la colaboración..." required></textarea>
+            </div>
+            <div class="form-hint">Los campos con * son obligatorios. Tu información va directa a Rubén (DEVBU93). Sin intermediarios.</div>
+            <button class="btn-submit" onclick="submitForm('colaborar')">📤 ENVIAR SOLICITUD</button>
+          </div>
+        </div>
+
+        <!-- ── FORMULARIO 3: IDEA / NOTICIA ── -->
+        <div class="form-panel" id="form-idea">
+          <div class="form-intro">
+            ¿Tienes una idea para BRM, una noticia del barrio, algo que debería debatirse en la radio? Mándalo. Con o sin email, con o sin nombre. Lo que importa es el contenido, no la firma.
+          </div>
+          <div class="brm-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="i-tema">Tema o título *</label>
+                <input type="text" id="i-tema" placeholder="¿De qué va la idea o noticia?" required>
+              </div>
+              <div class="form-group">
+                <label for="i-zona">Zona o contexto</label>
+                <input type="text" id="i-zona" placeholder="Ej: Sant Salvador, Cataluña, España, Global...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="i-desc">Descripción o desarrollo *</label>
+              <textarea id="i-desc" placeholder="Explica la idea, la noticia, el contexto. Cuánto más detalle mejor, pero no hay mínimo ni formato obligatorio." required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="i-url">URL de referencia (opcional)</label>
+                <input type="url" id="i-url" placeholder="https://... (artículo, vídeo, fuente...)">
+              </div>
+              <div class="form-group">
+                <label for="i-email">Tu email (opcional)</label>
+                <input type="email" id="i-email" placeholder="Si quieres que te respondamos">
+              </div>
+            </div>
+            <div class="form-hint">Solo el tema y la descripción son obligatorios. Puedes ser totalmente anónimo. Todas las ideas pasan por Rubén antes de cualquier acción.</div>
+            <button class="btn-submit" onclick="submitForm('idea')">📤 ENVIAR IDEA</button>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /tab-colabora -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+      <div>
+        <div class="footer-brand">BRM · BUBATRONIK RADIO · INFO &amp; PROGRAMAS</div>
+        <div class="footer-legal">© 2026 DEVBU93 · Rubén Rodríguez Francisco · WORLDMOS · AGUAFLOW · DPNGAME</div>
+      </div>
+      <div class="footer-links">
+        <a class="footer-link" href="https://brm.worldmos.world" target="_blank" rel="noopener">🛰️ Radio Principal</a>
+        <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener">Instagram</a>
+        <a class="footer-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener">Stream</a>
+        <a class="footer-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">Sesiones Drive</a>
+        <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
+      </div>
+      <div class="footer-copy">
+        Sant Salvador · Tarragona · Catalunya · España<br>
+        Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺
+      </div>
+    </footer>
+
+  </div><!-- /page -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       JAVASCRIPT — Tabs, Formularios, Clock, Ticker, Reveal
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+  // ══════════════════════════════════════════════════════════════
+  //  BRM · INFO & PROGRAMAS · v2026.06
+  //  brm.worldmos.info — GitHub repo: DEVBU93/BRM_BUBATRONIK_INFO
+  //  Rubén Rodríguez Francisco · DEVBU93 · LOB@-Pulpo · ManadaSalvaje
+  // ══════════════════════════════════════════════════════════════
+
+  // ── TICKER ANIMADO ────────────────────────────────────────────────────
+  function initTicker() {
+    const text = '📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · RADIO INDEPENDIENTE DESDE SANT SALVADOR, TARRAGONA · OPEN FORMAT · SIN JERARQUÍAS · PARA TOD@S · VERMUT DOMINICAL CADA DOMINGO 12H · 709+ TRACKS · V2 EN CONSTRUCCIÓN · WORLDMOS · AGUAFLOW · DPNGAME · ¡AUUUAUUU! 🐺 · ';
+    const full = text.repeat(4);
+    const track = document.getElementById('tickerTrack');
+    track.innerHTML = '<span>' + full + '</span><span>' + full + '</span>';
+  }
+
+  // ── RELOJ EN TIEMPO REAL ──────────────────────────────────────────────
+  function initClock() {
+    function tick() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const el = document.getElementById('clock');
+      if (el) {
+        el.textContent =
+          pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
+          + ' · ' + pad(now.getDate()) + '/' + pad(now.getMonth() + 1) + '/' + now.getFullYear();
+      }
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // ── NAVEGACIÓN: TABS PRINCIPALES ─────────────────────────────────────
+  document.querySelectorAll('.nav-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var id = tab.dataset.tab;
+      // Desactivar todos
+      document.querySelectorAll('.nav-tab').forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(function(p) {
+        p.classList.remove('active');
+      });
+      // Activar el seleccionado
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById('tab-' + id);
+      if (panel) {
+        panel.classList.add('active');
+        triggerReveal(panel);
+        // Scroll suave al top del panel en mobile
+        if (window.innerWidth < 960) {
+          setTimeout(function() {
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      }
+    });
+  });
+
+  // ── NAVEGACIÓN: SUB-TABS DE FORMULARIOS ──────────────────────────────
+  document.querySelectorAll('.form-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var id = tab.dataset.form;
+      document.querySelectorAll('.form-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.form-panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      var panel = document.getElementById('form-' + id);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // ── FORMULARIOS — SUBMIT VIA MAILTO ───────────────────────────────────
+  // Cambia este email por el que quieras usar como destino
+  var CONTACT_EMAIL = 'rubenrodriguez.f.93@gmail.com';
+
+  function getVal(id) {
+    var el = document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function submitForm(type) {
+    var subject = '';
+    var body = '';
+
+    if (type === 'proponer') {
+      // ── Formulario 1: Proponer Programa
+      var nombre  = getVal('p-nombre');
+      var tipo    = getVal('p-tipo');
+      var desc    = getVal('p-desc');
+      var freq    = getVal('p-frecuencia');
+      var zona    = getVal('p-zona');
+      var contact = getVal('p-contacto');
+      var email   = getVal('p-email');
+      var msg     = getVal('p-mensaje');
+
+      if (!nombre || !tipo || !desc || !contact || !email) {
+        toast('⚠️ Rellena los campos obligatorios marcados con *');
+        return;
+      }
+
+      subject = '[BRM] Propuesta de programa: ' + nombre;
+      body = '=== PROPUESTA DE PROGRAMA — BRM INFO & PROGRAMAS ===\n\n'
+        + 'NOMBRE DEL PROGRAMA: ' + nombre + '\n'
+        + 'TIPO: ' + tipo + '\n'
+        + 'FRECUENCIA PREVISTA: ' + (freq || 'No especificada') + '\n'
+        + 'ZONA GEOGRÁFICA: ' + (zona || 'No especificada') + '\n\n'
+        + 'DESCRIPCIÓN DEL PROGRAMA:\n' + desc + '\n\n'
+        + 'DATOS DE CONTACTO:\n'
+        + '  Nombre/Alias: ' + contact + '\n'
+        + '  Email: ' + email + '\n\n'
+        + (msg ? 'NOTAS ADICIONALES:\n' + msg + '\n\n' : '')
+        + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
+        + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
+
+    } else if (type === 'colaborar') {
+      // ── Formulario 2: Colaborar
+      var c_nombre = getVal('c-nombre');
+      var c_email  = getVal('c-email');
+      var c_rol    = getVal('c-rol');
+      var c_disp   = getVal('c-disponibilidad');
+      var c_zona   = getVal('c-zona');
+      var c_exp    = getVal('c-experiencia');
+      var c_msg    = getVal('c-mensaje');
+
+      if (!c_nombre || !c_email || !c_rol || !c_msg) {
+        toast('⚠️ Rellena los campos obligatorios marcados con *');
+        return;
+      }
+
+      subject = '[BRM] Solicitud de colaboración: ' + c_rol + ' — ' + c_nombre;
+      body = '=== SOLICITUD DE COLABORACIÓN — BRM INFO & PROGRAMAS ===\n\n'
+        + 'NOMBRE/ALIAS: ' + c_nombre + '\n'
+        + 'EMAIL: ' + c_email + '\n'
+        + 'ROL DESEADO: ' + c_rol + '\n'
+        + 'DISPONIBILIDAD: ' + (c_disp || 'No especificada') + '\n'
+        + 'ZONA: ' + (c_zona || 'No especificada') + '\n'
+        + 'EXPERIENCIA PREVIA: ' + (c_exp || 'No indicada') + '\n\n'
+        + 'MOTIVACIÓN Y PROPUESTA:\n' + c_msg + '\n\n'
+        + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
+        + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
+
+    } else if (type === 'idea') {
+      // ── Formulario 3: Idea / Noticia
+      var i_tema  = getVal('i-tema');
+      var i_zona  = getVal('i-zona');
+      var i_desc  = getVal('i-desc');
+      var i_url   = getVal('i-url');
+      var i_email = getVal('i-email');
+
+      if (!i_tema || !i_desc) {
+        toast('⚠️ El tema y la descripción son obligatorios');
+        return;
+      }
+
+      subject = '[BRM] Idea / Noticia: ' + i_tema;
+      body = '=== IDEA / NOTICIA — BRM INFO & PROGRAMAS ===\n\n'
+        + 'TEMA: ' + i_tema + '\n'
+        + 'ZONA / CONTEXTO: ' + (i_zona || 'No especificada') + '\n'
+        + (i_email ? 'EMAIL DE CONTACTO: ' + i_email + '\n' : '(anónimo)\n')
+        + (i_url   ? 'URL REFERENCIA: ' + i_url + '\n' : '')
+        + '\nDESCRIPCIÓN:\n' + i_desc + '\n\n'
+        + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
+        + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
+    }
+
+    // Construir y abrir el enlace mailto
+    var mailto = 'mailto:' + CONTACT_EMAIL
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+    setTimeout(function() { toast('📤 Abriendo tu cliente de correo...'); }, 300);
+  }
+
+  // ── REVEAL SCROLL ANIMATION ───────────────────────────────────────────
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target); // solo una vez
+      }
+    });
+  }, { threshold: 0.08 });
+
+  function triggerReveal(scope) {
+    var targets = (scope || document).querySelectorAll('.reveal:not(.visible)');
+    targets.forEach(function(el) { revealObserver.observe(el); });
+  }
+
+  // ── TOAST NOTIFICACIONES ──────────────────────────────────────────────
+  function toast(msg, duration) {
+    duration = duration || 3500;
+    var wrap = document.getElementById('toastWrap');
+    var el = document.createElement('div');
+    el.className = 'toast';
+    el.textContent = msg;
+    wrap.appendChild(el);
+    setTimeout(function() {
+      el.classList.add('out');
+      setTimeout(function() { el.remove(); }, 400);
+    }, duration);
+  }
+
+  // ── INIT ALL ──────────────────────────────────────────────────────────
+  initTicker();
+  initClock();
+  triggerReveal();
+  setTimeout(function() { toast('📻 BRM · INFO & PROGRAMAS · brm.worldmos.info'); }, 800);
+  </script>
+
+</body>
+</html>
+
+
+
+
+
