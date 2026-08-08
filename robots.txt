@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://brm.worldmos.info/sitemap.xml

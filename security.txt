@@ -1,0 +1,3 @@
+Contact: mailto:rubenrodriguez.f.93@gmail.com
+Preferred-Languages: es, ca, en
+Canonical: https://brm.worldmos.info/.well-known/security.txt
