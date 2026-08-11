@@ -17,18 +17,18 @@
   <meta name="twitter:title" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS">
   <meta name="twitter:description" content="Radio comunitaria independiente · Sant Salvador · Para tod@s · ¡AUUUAUUU! 🐺">
   <title>📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · 666.333</title>
- 
+
   <!-- Fuentes Google — misma familia que brm.worldmos.world -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
- 
+
   <style>
     /* ══════════════════════════════════════
        RESET & VARIABLES
     ══════════════════════════════════════ */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
     :root {
       /* Fondos */
       --bg:       #0a0a0a;
@@ -62,9 +62,9 @@
       --fs-sm: 11px;
       --fs-base: 13px;
     }
- 
+
     html { scroll-behavior: smooth; overflow-x: hidden; }
- 
+
     body {
       background: var(--bg);
       color: var(--white);
@@ -73,7 +73,7 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
- 
+
     /* ── Grain overlay ── */
     body::after {
       content: '';
@@ -81,7 +81,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 9999; opacity: 0.5;
     }
- 
+
     /* ── Scanlines retro ── */
     .scanlines {
       position: fixed; inset: 0;
@@ -91,7 +91,7 @@
       );
       pointer-events: none; z-index: 9998; mix-blend-mode: overlay;
     }
- 
+
     /* ── BG Mesh de color ── */
     .bg-mesh {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
@@ -100,7 +100,7 @@
         radial-gradient(ellipse 50% 70% at 95% 90%, rgba(245,197,24,0.03) 0%, transparent 60%),
         radial-gradient(ellipse 40% 40% at 50% 50%, rgba(16,185,129,0.015) 0%, transparent 70%);
     }
- 
+
     /* ══════════════════════════════════════
        TICKER ANIMADO SUPERIOR
     ══════════════════════════════════════ */
@@ -135,7 +135,7 @@
       font-size: 11px; color: var(--bg); padding: 0 32px; font-weight: 700; letter-spacing: 1.5px;
     }
     @keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
- 
+
     /* ══════════════════════════════════════
        PAGE WRAPPER
     ══════════════════════════════════════ */
@@ -144,7 +144,7 @@
       padding-top: var(--ticker-h);
       max-width: 1400px; margin: 0 auto;
     }
- 
+
     /* ══════════════════════════════════════
        HEADER PRINCIPAL
     ══════════════════════════════════════ */
@@ -156,7 +156,7 @@
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       position: sticky; top: var(--ticker-h); z-index: 100;
     }
- 
+
     /* Bloque izquierdo — logo + badges */
     .header-left { display: flex; flex-direction: column; gap: 3px; }
     .station-logo {
@@ -177,7 +177,7 @@
       font-family: var(--font-mono); font-size: var(--fs-xs);
       letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-top: 2px;
     }
- 
+
     /* Centro — ON AIR badge pulsante */
     .onair-center { display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .onair-pulse {
@@ -210,7 +210,7 @@
       font-family: var(--font-cond); font-size: 10px; letter-spacing: 3px;
       color: var(--red); font-weight: 700; text-transform: uppercase;
     }
- 
+
     /* Derecha — frecuencia + reloj */
     .header-right { text-align: right; }
     .freq-number {
@@ -224,7 +224,7 @@
     .freq-clock {
       font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted2); margin-top: 6px;
     }
- 
+
     /* ══════════════════════════════════════
        NAVEGACIÓN — TABS PRINCIPALES
     ══════════════════════════════════════ */
@@ -244,55 +244,65 @@
     }
     .nav-tab:hover { color: var(--amber2); }
     .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
- 
+
     /* ══════════════════════════════════════
        TAB PANELS
     ══════════════════════════════════════ */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
- 
+
     /* ══════════════════════════════════════
        MINI PLAYER
     ══════════════════════════════════════ */
-    .mini-player {
-      background: var(--bg3); border: 1px solid var(--border2);
-      border-left: 3px solid var(--amber); border-radius: 10px;
-      padding: 20px 24px; margin: 24px 36px;
-      display: flex; flex-direction: column; gap: 14px;
+    .bridge-hero {
+      background: linear-gradient(135deg, var(--bg3), var(--bg4));
+      border: 1px solid var(--border2); border-left: 3px solid var(--amber);
+      border-radius: 12px; padding: 28px 30px; margin: 24px 36px;
+      display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap;
+      position: relative; overflow: hidden;
     }
-    .mini-player-header {
-      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    .bridge-hero::before {
+      content: ''; position: absolute; top: -40%; right: -8%; width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(245,197,24,0.12), transparent 70%);
+      pointer-events: none;
     }
-    .mini-player-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--red); flex-shrink: 0;
-      animation: blink-dot 1.2s step-start infinite;
-      box-shadow: 0 0 8px rgba(239,68,68,0.5);
+    .bridge-live-dot {
+      width: 12px; height: 12px; border-radius: 50%; background: var(--red); flex-shrink: 0;
+      animation: blink-dot 1.2s step-start infinite; box-shadow: 0 0 10px rgba(239,68,68,0.6);
+      margin-top: 7px;
     }
-    .mini-player-label {
-      font-family: var(--font-cond); font-size: 13px; font-weight: 700;
-      letter-spacing: 3px; color: var(--amber); text-transform: uppercase;
+    .bridge-content { display: flex; flex-direction: column; gap: 12px; z-index: 1; }
+    .bridge-eyebrow {
+      font-family: var(--font-cond); font-size: 12px; font-weight: 700; letter-spacing: 3px;
+      color: var(--amber4); text-transform: uppercase;
     }
-    .mini-player-desc { font-size: var(--fs-xs); color: var(--muted); letter-spacing: 1px; }
- 
-    /* Audio nativo — el navegador pone sus controles */
-    .mini-player audio { width: 100%; height: 36px; }
- 
-    .mini-player-links { display: flex; gap: 10px; flex-wrap: wrap; }
-    .player-ext-link {
-      font-family: var(--font-cond); font-size: 11px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--amber4);
-      text-decoration: none; border: 1px solid var(--border2);
-      padding: 6px 14px; border-radius: 4px; transition: all 0.2s;
+    .bridge-cta {
+      display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+      padding: 15px 30px; border-radius: 8px; text-decoration: none;
+      font-family: var(--font-cond); font-size: 15px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; background: linear-gradient(135deg, var(--amber), var(--amber2));
+      color: var(--bg); box-shadow: 0 0 24px rgba(245,197,24,0.22); transition: all 0.25s;
     }
-    .player-ext-link:hover { border-color: var(--amber); color: var(--amber); background: var(--glow-a); }
- 
+    .bridge-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(245,197,24,0.36); }
+    .bridge-tagline { font-size: var(--fs-xs); color: var(--muted); line-height: 1.7; font-style: italic; }
+    .bridge-tagline strong { color: var(--amber2); font-style: normal; }
+
+    .bridge-strip { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 36px 24px; }
+    .bridge-strip-item {
+      flex: 1; min-width: 150px; display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px; border-radius: 8px; background: var(--bg3); border: 1px solid var(--border2);
+      text-decoration: none; color: var(--white); font-family: var(--font-cond); font-size: 12px;
+      font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; cursor: pointer;
+    }
+    .bridge-strip-item:hover { border-color: var(--amber4); background: var(--amber5); color: var(--amber); }
+    .bridge-strip-item span:first-child { font-size: 15px; }
+
     /* ══════════════════════════════════════
        SECCIONES GENÉRICAS
     ══════════════════════════════════════ */
     .section { padding: 36px; border-bottom: 1px solid var(--border); }
     .section:last-child { border-bottom: none; }
- 
+
     .section-title {
       font-family: var(--font-disp); font-size: clamp(22px, 3vw, 40px);
       letter-spacing: 3px; line-height: 1; margin-bottom: 6px;
@@ -308,7 +318,7 @@
       background: linear-gradient(to right, var(--amber4), transparent);
       margin: 28px 0;
     }
- 
+
     /* ══════════════════════════════════════
        MANIFIESTO
     ══════════════════════════════════════ */
@@ -320,18 +330,18 @@
     .manifiesto-text em { color: var(--amber3); font-style: italic; }
     .manifiesto-text p { margin-bottom: 16px; }
     .manifiesto-text p:last-child { margin-bottom: 0; }
- 
+
     .manifiesto-quote {
       border-left: 4px solid var(--amber); padding-left: 20px;
       margin: 24px 0; font-size: 17px; font-style: italic;
       font-family: var(--font-cond); color: var(--amber3); line-height: 1.7; opacity: 0.9;
     }
- 
+
     /* ══════════════════════════════════════
        V1 vs V2 — DOS COLUMNAS
     ══════════════════════════════════════ */
     .v1v2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
- 
+
     .v-card {
       background: var(--bg3); border: 1px solid var(--border2);
       border-radius: 10px; padding: 24px; position: relative; overflow: hidden;
@@ -341,7 +351,7 @@
     }
     .v1-card::before { background: linear-gradient(90deg, var(--amber), var(--amber2)); }
     .v2-card::before { background: linear-gradient(90deg, var(--green), #06b6d4); }
- 
+
     .v-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
     .v-version { font-family: var(--font-disp); font-size: 46px; line-height: 1; }
     .v1-card .v-version { color: var(--amber); }
@@ -351,13 +361,13 @@
     .v-card-status { font-family: var(--font-cond); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
     .v1-card .v-card-status { color: var(--amber4); }
     .v2-card .v-card-status { color: var(--green); opacity: 0.7; }
- 
+
     .v-items { display: flex; flex-direction: column; gap: 10px; }
     .v-item { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: 1.6; }
     .v-item-bullet { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
     .v-item-text { color: var(--muted); }
     .v-item-text strong { color: var(--white); }
- 
+
     /* ══════════════════════════════════════
        CARDS GRID GENÉRICO
     ══════════════════════════════════════ */
@@ -379,7 +389,7 @@
     .card-icon { font-size: 26px; margin-bottom: 10px; display: block; }
     .card-title { font-family: var(--font-syne); font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .card-desc { font-size: var(--fs-xs); color: var(--muted); line-height: 1.8; }
- 
+
     /* ══════════════════════════════════════
        ABOUT GRID (QUÉ ES BRM)
     ══════════════════════════════════════ */
@@ -387,7 +397,7 @@
     .about-text { font-family: var(--font-cond); font-size: 15px; line-height: 1.9; color: var(--muted); margin-bottom: 16px; }
     .about-text strong { color: var(--white); }
     .about-text em { color: var(--amber3); }
- 
+
     .about-sidebar { background: var(--bg3); border: 1px solid var(--border2); border-radius: 8px; padding: 20px; }
     .sidebar-title {
       font-family: var(--font-disp); font-size: 13px; letter-spacing: 3px;
@@ -397,7 +407,7 @@
     .sidebar-line { flex: 1; height: 1px; background: var(--border2); }
     .sidebar-section { margin-bottom: 22px; }
     .sidebar-section:last-child { margin-bottom: 0; }
- 
+
     .info-row {
       display: flex; justify-content: space-between; align-items: center;
       padding: 7px 0; border-bottom: 1px solid rgba(34,34,66,0.4);
@@ -405,7 +415,7 @@
     .info-row:last-child { border-bottom: none; }
     .info-label { font-family: var(--font-cond); font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
     .info-val { color: var(--white); font-weight: 600; font-size: var(--fs-xs); text-align: right; }
- 
+
     /* ══════════════════════════════════════
        PROGRAMAS
     ══════════════════════════════════════ */
@@ -434,7 +444,7 @@
     .status-live { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
     .status-soon { background: rgba(245,197,24,0.1); color: var(--amber); border: 1px solid var(--amber4); }
     .status-idea { background: var(--bg4); color: var(--muted); border: 1px solid var(--border2); }
- 
+
     /* ══════════════════════════════════════
        PARRILLA DE PROGRAMACIÓN (tabla)
        — fuente: Documento Final de Identidad, Programación y Estructura
@@ -459,7 +469,7 @@
       padding: 12px 16px; background: var(--bg3); border-left: 2px solid var(--amber4);
       border-radius: 0 6px 6px 0; margin-top: 14px;
     }
- 
+
     /* ══════════════════════════════════════
        FICHAS DE PROGRAMA
     ══════════════════════════════════════ */
@@ -483,14 +493,14 @@
       text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
     }
     .ficha-field-val { font-size: var(--fs-xs); color: var(--white); line-height: 1.6; }
- 
+
     .radar-label {
       font-family: var(--font-cond); font-size: 11px; font-weight: 700; letter-spacing: 3px;
       text-transform: uppercase; color: var(--muted); margin: 8px 0 14px;
       display: flex; align-items: center; gap: 10px;
     }
     .radar-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
- 
+
     /* ══════════════════════════════════════
        FORMULARIOS — SUB-TABS
     ══════════════════════════════════════ */
@@ -507,20 +517,20 @@
     }
     .form-tab:hover { color: var(--amber2); }
     .form-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
- 
+
     .form-panel { display: none; }
     .form-panel.active { display: block; }
- 
+
     /* ── Estilos de los formularios ── */
     .form-intro {
       font-family: var(--font-cond); font-size: 14px; color: var(--muted);
       line-height: 1.9; margin-bottom: 24px; max-width: 640px;
     }
     .brm-form { display: flex; flex-direction: column; gap: 18px; max-width: 680px; }
- 
+
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
- 
+
     .form-group label {
       font-family: var(--font-cond); font-size: 10px; font-weight: 700;
       letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
@@ -543,9 +553,9 @@
     .form-group select { cursor: pointer; }
     .form-group select option { background: var(--bg3); color: var(--white); }
     .form-group textarea { min-height: 100px; }
- 
+
     .form-hint { font-size: var(--fs-xs); color: var(--muted2); letter-spacing: 0.5px; line-height: 1.7; }
- 
+
     .btn-submit {
       padding: 13px 28px; border-radius: 6px; cursor: pointer; border: none;
       font-family: var(--font-cond); font-size: 13px; font-weight: 700;
@@ -555,7 +565,7 @@
     }
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(245,197,24,0.32); }
     .btn-submit:active { transform: scale(0.98); }
- 
+
     /* ══════════════════════════════════════
        FLUJO TÉCNICO (código)
     ══════════════════════════════════════ */
@@ -567,7 +577,7 @@
     .code-flow .cf-node { color: var(--amber); }
     .code-flow .cf-ok { color: var(--green); }
     .code-flow .cf-arr { color: var(--muted2); }
- 
+
     /* ══════════════════════════════════════
        GÉNEROS TAGS
     ══════════════════════════════════════ */
@@ -578,7 +588,7 @@
     }
     .gtag.hot { border: 1px solid var(--amber4); color: var(--amber2); background: rgba(245,197,24,0.04); }
     .gtag.cool { border: 1px solid var(--border2); color: var(--muted); background: transparent; }
- 
+
     /* ══════════════════════════════════════
        FOOTER
     ══════════════════════════════════════ */
@@ -602,7 +612,7 @@
     }
     .footer-link:hover { color: var(--amber2); }
     .footer-copy { font-size: var(--fs-xs); color: var(--muted2); letter-spacing: 1px; text-align: right; }
- 
+
     /* ══════════════════════════════════════
        TOAST NOTIFICACIONES
     ══════════════════════════════════════ */
@@ -619,13 +629,13 @@
     @keyframes toast-in { to{opacity:1;transform:translateY(0)} }
     .toast.out { animation: toast-out 0.3s ease forwards; }
     @keyframes toast-out { to{opacity:0;transform:translateY(8px)} }
- 
+
     /* ══════════════════════════════════════
        REVEAL ANIMATION
     ══════════════════════════════════════ */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.4s ease, transform 0.4s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
- 
+
     /* ══════════════════════════════════════
        RESPONSIVE — MOBILE
     ══════════════════════════════════════ */
@@ -633,7 +643,9 @@
       .station-header { grid-template-columns: 1fr auto; padding: 16px 20px; }
       .header-right { display: none; }
       .section { padding: 24px 20px; }
-      .mini-player { margin: 16px 20px; }
+      .bridge-hero { margin: 16px 20px; padding: 22px 20px; }
+      .bridge-strip { margin: 0 20px 20px; }
+      .bridge-strip-item { min-width: 44%; }
       .v1v2-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
@@ -658,7 +670,7 @@
   <div class="scanlines"></div>
   <div class="bg-mesh"></div>
   <div class="toast-wrap" id="toastWrap"></div>
- 
+
   <!-- ═══════════════════════════════════════════════════════
        TICKER ANIMADO SUPERIOR
   ═══════════════════════════════════════════════════════ -->
@@ -671,19 +683,19 @@
       <div class="ticker-track" id="tickerTrack"></div>
     </div>
   </div>
- 
+
   <div class="page">
- 
+
     <!-- ═══════════════════════════════════════════════════════
          HEADER — TÍTULO + ON AIR + FRECUENCIA
     ═══════════════════════════════════════════════════════ -->
     <header class="station-header">
       <div class="header-left">
         <div class="station-logo">BUBATRONIK_BRM</div>
-        <div class="header-badge">INFO &amp; PROGRAMAS</div>
+        <div class="header-badge">MANIFIESTO · PROGRAMAS · PARTICIPACIÓN</div>
         <div class="header-tagline">WorldMOS · AguaFlow · DPN-Game · © 2026</div>
       </div>
- 
+
       <!-- Dot rojo pulsante ON AIR -->
       <div class="onair-center">
         <div class="onair-pulse">
@@ -691,14 +703,14 @@
         </div>
         <div class="onair-label">▶ ON AIR</div>
       </div>
- 
+
       <div class="header-right">
         <div class="freq-number">666.333</div>
         <div class="freq-band">Open Format · Radio Independiente</div>
         <div class="freq-clock" id="clock">--:-- · --/--/----</div>
       </div>
     </header>
- 
+
     <!-- ═══════════════════════════════════════════════════════
          NAVEGACIÓN — 6 TABS PRINCIPALES
     ═══════════════════════════════════════════════════════ -->
@@ -710,47 +722,41 @@
       <button class="nav-tab"        data-tab="programas"  role="tab">📋 PROGRAMAS</button>
       <button class="nav-tab"        data-tab="colabora"   role="tab">🤝 COLABORA</button>
     </nav>
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: INICIO
          Contiene: player mini + manifiesto + V1 vs V2
     ═══════════════════════════════════════════════════════ -->
     <div class="tab-panel active" id="tab-inicio">
- 
-      <!-- PLAYER MINI CON DOT ROJO PULSANTE -->
-      <div class="mini-player reveal">
-        <div class="mini-player-header">
-          <div class="mini-player-dot"></div>
-          <div>
-            <div class="mini-player-label">📻 Radio en Directo — BUBATRONIK_BRM</div>
-            <div class="mini-player-desc">128 kbps · MP3 · Open Format · Sant Salvador, Tarragona</div>
-          </div>
-        </div>
- 
-        <!-- AUDIO HTML5 nativo — URL del stream según el prompt -->
-        <audio controls preload="none" aria-label="Stream BUBATRONIK_BRM Radio">
-          <source src="http://bubatronik.radiostream321.com/" type="audio/mpeg">
-          Tu navegador no soporta audio HTML5. Usa los links externos de abajo.
-        </audio>
- 
-        <!-- Links externos al stream -->
-        <div class="mini-player-links">
-          <a class="player-ext-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener" title="Abrir player nativo">🌐 RadioStream321</a>
-          <a class="player-ext-link" href="https://brm.worldmos.world" target="_blank" rel="noopener" title="Web principal BRM">🛰️ BRM Main Site</a>
-          <a class="player-ext-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener" title="Instagram de BRM">📸 Instagram</a>
-          <a class="player-ext-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" title="Sesiones en Drive">💾 Sesiones Drive</a>
+
+      <!-- BRIDGE: sin reproductor — .info explica, .world hace sonar -->
+      <div class="bridge-hero reveal">
+        <div class="bridge-live-dot"></div>
+        <div class="bridge-content">
+          <div class="bridge-eyebrow">📻 BUBATRONIK_BRM · EN EMISIÓN 24/7 · 666.333</div>
+          <a class="bridge-cta" href="https://brm.worldmos.world" target="_blank" rel="noopener">🔊 Escuchar BRM en Directo</a>
+          <div class="bridge-tagline">La información vive aquí. La señal suena en <strong>BRM World</strong>.</div>
         </div>
       </div>
- 
+
+      <div class="bridge-strip reveal">
+        <a class="bridge-strip-item" href="https://brm.worldmos.world" target="_blank" rel="noopener"><span>📻</span> Radio en directo</a>
+        <a class="bridge-strip-item" href="https://brm.worldmos.world#tab-programacion" target="_blank" rel="noopener"><span>📅</span> Programación</a>
+        <a class="bridge-strip-item" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener"><span>💾</span> Archivo de sesiones</a>
+        <a class="bridge-strip-item" href="#tab-colabora" onclick="goToTab('colabora'); return false;"><span>🎙️</span> Proponer un programa</a>
+      </div>
+
+      <!-- Links secundarios (Instagram, stream nativo) siguen accesibles en el footer -->
+
       <!-- MANIFIESTO -->
       <div class="section">
         <div class="section-title reveal">MANIFIESTO</div>
         <div class="section-sub reveal">Radio Independiente · Sant Salvador · Para Tod@s</div>
- 
+
         <div class="manifiesto-quote reveal">
           "La música no entiende de jerarquías. Del más pobre al más rico, todos sentimos lo mismo cuando la canción correcta suena en el momento justo."
         </div>
- 
+
         <div class="manifiesto-text reveal">
           <p><strong>BUBATRONIK_BRM</strong> nace desde <strong>Sant Salvador, Tarragona, Catalunya</strong> como un proyecto de radio independiente, comunitaria y cultural. Sin algoritmos que decidan lo que escuchas. Sin anuncios que interrumpan. Sin jerarquías que definan quién puede participar o quién merece escuchar.</p>
           <p>La radio es un espacio <strong>para tod@s</strong> — tóxicos y no tóxicos, madrugadores y nocturnos, de barrio y del mundo. El único requisito para estar en la manada es querer estar. <em>La música como chimenea emocional</em>: activa recuerdos, saca lágrimas, provoca risas, crea vínculos que ningún PowerPoint de team building ha conseguido jamás.</p>
@@ -758,13 +764,13 @@
           <p>Esto es <strong>Open Format</strong> en su máxima expresión. No hay género prohibido, no hay artista imposible, no hay frontera musical. Si suena bien y hace bien, entra en rotación. Y lo que viene — la V2 — no es ciencia ficción ni Matrix: es evolución lógica de lo que ya funciona, con debate, conocimiento, IA y comunidad real.</p>
           <p><em>¡AUUUAUUU! 🐺 — La manada es tod@s. La manada somos.</em></p>
         </div>
- 
+
         <div class="divider"></div>
- 
+
         <!-- V1 vs V2 dentro del INICIO -->
         <div class="section-title reveal" style="font-size: clamp(18px, 2.5vw, 32px); margin-bottom: 6px;">V1 vs V2</div>
         <div class="section-sub reveal">Lo que hay ahora · Lo que viene</div>
- 
+
         <div class="v1v2-grid reveal">
           <!-- V1 ACTUAL -->
           <div class="v-card v1-card">
@@ -777,7 +783,7 @@
             </div>
             <div class="v-items">
               <div class="v-item"><span class="v-item-bullet">🎵</span><span class="v-item-text"><strong>Música 24/7</strong> — Stream continuo, sin pausa, sin algoritmos</span></div>
-              <div class="v-item"><span class="v-item-bullet">📀</span><span class="v-item-text"><strong>709+ tracks</strong> curados manualmente — géneros variados Open Format</span></div>
+              <div class="v-item"><span class="v-item-bullet">📀</span><span class="v-item-text"><strong>1.397 tracks</strong> curados manualmente — géneros variados Open Format</span></div>
               <div class="v-item"><span class="v-item-bullet">🎛️</span><span class="v-item-text"><strong>Sesiones Numeradas</strong> (21+) de 4–6h, grabadas, acceso libre Drive</span></div>
               <div class="v-item"><span class="v-item-bullet">☀️</span><span class="v-item-text"><strong>Vermut Dominical</strong> — cada domingo 12h, ritual obligatorio de la manada</span></div>
               <div class="v-item"><span class="v-item-bullet">🌐</span><span class="v-item-text"><strong>brm.worldmos.world</strong> — web completa con player, playlist, info</span></div>
@@ -785,7 +791,7 @@
               <div class="v-item"><span class="v-item-bullet">💾</span><span class="v-item-text"><strong>Archivo libre</strong> en Google Drive, sin suscripciones ni registro</span></div>
             </div>
           </div>
- 
+
           <!-- V2 VISIÓN -->
           <div class="v-card v2-card">
             <div class="v-card-header">
@@ -807,9 +813,9 @@
           </div>
         </div>
       </div>
- 
+
     </div><!-- /tab-inicio -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: QUÉ ES BRM
     ═══════════════════════════════════════════════════════ -->
@@ -817,7 +823,7 @@
       <div class="section">
         <div class="section-title reveal">QUÉ ES BRM</div>
         <div class="section-sub reveal">BUBATRONIK · Radio Comunitaria · Proyecto · Comunidad</div>
- 
+
         <div class="about-grid reveal">
           <!-- Texto principal -->
           <div>
@@ -833,7 +839,7 @@
             <div class="about-text">
               <p><strong>La Manada Salvaje</strong> es la comunidad: sin jerarquías formales, sin requisitos de entrada, con un único código — a sonreír, divertirse y aportar cuando puedas. El grito de la manada es <strong>¡AUUUAUUU! 🐺</strong></p>
             </div>
- 
+
             <div class="divider"></div>
             <div class="section-sub" style="margin-bottom: 16px;">TECNOLOGÍA QUE LO HACE POSIBLE</div>
             <div class="cards-grid">
@@ -859,7 +865,7 @@
               </div>
             </div>
           </div>
- 
+
           <!-- Sidebar de datos -->
           <div class="about-sidebar">
             <div class="sidebar-section">
@@ -872,7 +878,7 @@
             </div>
             <div class="sidebar-section">
               <div class="sidebar-title">📻 RADIO STATS <div class="sidebar-line"></div></div>
-              <div class="info-row"><span class="info-label">Tracks</span><span class="info-val">709+ en colección</span></div>
+              <div class="info-row"><span class="info-label">Tracks</span><span class="info-val">1.397 en colección</span></div>
               <div class="info-row"><span class="info-label">Sesiones</span><span class="info-val">21+ grabadas</span></div>
               <div class="info-row"><span class="info-label">Formato</span><span class="info-val">Open Format</span></div>
               <div class="info-row"><span class="info-label">Stream</span><span class="info-val">128 kbps MP3</span></div>
@@ -889,7 +895,7 @@
         </div>
       </div>
     </div><!-- /tab-queesbrm -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: V1 ACTUAL
     ═══════════════════════════════════════════════════════ -->
@@ -897,7 +903,7 @@
       <div class="section">
         <div class="section-title reveal">V1 · LO QUE HAY</div>
         <div class="section-sub reveal">Estado actual · Activo · Funcionando · Real</div>
- 
+
         <div class="cards-grid reveal" style="margin-bottom: 32px;">
           <div class="info-card">
             <span class="card-icon">🎵</span>
@@ -906,7 +912,7 @@
           </div>
           <div class="info-card">
             <span class="card-icon">📀</span>
-            <div class="card-title">709+ Tracks en Colección</div>
+            <div class="card-title">1.397 Tracks en Colección</div>
             <div class="card-desc">Curada track a track por DEVBU93. Desde Carlos Vecino hasta Wu Tang Clan, de Kase.O a Charlotte de Witte, de Avicii a Erykah Badu. Sin algoritmo de por medio.</div>
           </div>
           <div class="info-card">
@@ -922,7 +928,7 @@
           <div class="info-card">
             <span class="card-icon">🌐</span>
             <div class="card-title">Web Principal Completa</div>
-            <div class="card-desc">brm.worldmos.world con player canvas, playlist de 709+ tracks buscable, filtros por género, visualizador audio, Media Session API, tabs de información completa.</div>
+            <div class="card-desc">brm.worldmos.world con player canvas, playlist de 1.397 tracks buscable, filtros por género, visualizador audio, Media Session API, tabs de información completa.</div>
           </div>
           <div class="info-card">
             <span class="card-icon">💾</span>
@@ -930,7 +936,7 @@
             <div class="card-desc">Todas las sesiones grabadas en Google Drive. Sin anuncios, sin algoritmos, sin suscripciones. Acceso libre para toda La Manada Salvaje.</div>
           </div>
         </div>
- 
+
         <div class="divider"></div>
         <div class="section-sub" style="margin-bottom: 18px;">GÉNEROS EN ROTACIÓN ACTIVA</div>
         <div class="genre-cloud reveal">
@@ -952,7 +958,7 @@
         </div>
       </div>
     </div><!-- /tab-v1actual -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: VISIÓN V2
     ═══════════════════════════════════════════════════════ -->
@@ -960,11 +966,11 @@
       <div class="section">
         <div class="section-title reveal">VISIÓN V2</div>
         <div class="section-sub reveal">Lo que viene · En construcción · No es Matrix · Es posible</div>
- 
+
         <div class="about-text reveal" style="max-width: 700px; margin-bottom: 32px; font-family: var(--font-cond); font-size: 15px; line-height: 1.9; color: var(--muted);">
           La V2 no es ciencia ficción. Es una evolución lógica de lo que ya funciona, añadiendo capas de contenido, comunidad y tecnología que transforman BRM de <strong style="color: var(--white);">"radio de música"</strong> a <strong style="color: var(--white);">"plataforma de radio comunitaria independiente"</strong> con debates, noticias por zona e inteligencia artificial al servicio de la gente.
         </div>
- 
+
         <div class="cards-grid reveal">
           <div class="info-card">
             <span class="card-icon">🎙️</span>
@@ -997,7 +1003,7 @@
             <div class="card-desc">N8N o Make.com conectando todo el ecosistema: stream → web → Drive → Telegram → Instagram → Facebook. Publicación automática, scheduling inteligente, backups.</div>
           </div>
         </div>
- 
+
         <div class="divider"></div>
         <div class="section-sub" style="margin-bottom: 16px;">FLUJO AUTOMÁTICO PREVISTO (V2)</div>
         <div class="code-flow reveal">
@@ -1013,7 +1019,7 @@
         </div>
       </div>
     </div><!-- /tab-visionv2 -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: PROGRAMAS
     ═══════════════════════════════════════════════════════ -->
@@ -1021,11 +1027,11 @@
       <div class="section">
         <div class="section-title reveal">PROGRAMAS</div>
         <div class="section-sub reveal">Parrilla Oficial · Fichas de Programa · Ideas en el Radar</div>
- 
+
         <div class="about-text reveal" style="max-width: 680px; margin-bottom: 28px; font-family: var(--font-cond); font-size: 14px; line-height: 1.9; color: var(--muted);">
           La parrilla diaria de BRM, con horario y ficha de cada programa. Debajo, más ideas que están en el radar — si tienes una propuesta, ve a la pestaña <strong style="color: var(--amber);">COLABORA</strong> y rellena el formulario. Todo tipo de formato tiene cabida si aporta algo real.
         </div>
- 
+
         <div class="parrilla-table-wrap reveal">
           <table class="parrilla-table">
             <thead>
@@ -1049,16 +1055,16 @@
         <div class="parrilla-note reveal">
           <strong style="color: var(--amber2);">Nota:</strong> la Sesión Vermut (12:00) es un bloque autónomo, sin función de previa al Debate de las 16:00 — música y buen rollo para disfrutar en local, con cascos, en casa o como cada uno prefiera.
         </div>
- 
+
         <div class="divider"></div>
- 
+
         <div class="section-title reveal" style="font-size: 22px; margin-bottom: 6px;">FICHAS DE PROGRAMA</div>
         <div class="about-text reveal" style="max-width: 680px; margin-bottom: 22px; font-family: var(--font-cond); font-size: 13px; line-height: 1.8; color: var(--muted);">
           Duración, contenido y producción de cada bloque de la parrilla.
         </div>
- 
+
         <div class="fichas-grid reveal">
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">📰</span><div><div class="ficha-name">NOTICIAS</div><div class="ficha-hora">10:30 · 3–5 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Mundo → Europa → España → Catalunya → Camp de Tarragona → Manada</div></div>
@@ -1066,64 +1072,64 @@
             <div class="ficha-field"><div class="ficha-field-label">Idiomas</div><div class="ficha-field-val">Català / Castellà</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Guion + HeyGen</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🎙️</span><div><div class="ficha-name">22 MINUTOS</div><div class="ficha-hora">11:00 · 22 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Voces de la Manada, entidades y colectivos locales que quieren compartir algo</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Estructura</div><div class="ficha-field-val">Intro → bloque personas → bloque entidades → tema del día → cierre + llamada a acción</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Voz humana, guion asistido</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🍹</span><div><div class="ficha-name">SESIÓN VERMUT</div><div class="ficha-hora">12:00 · 30–60 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Música + buen rollo, sin tema ni agenda fijada</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Función</div><div class="ficha-field-val">Desconexión y disfrute libre — local, cascos o casa</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Playlist Suno / selección Manada, locución mínima</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🖼️</span><div><div class="ficha-name">CANCIONES DE IMÁGENES A MÚSICA</div><div class="ficha-hora">13:30 · 15–20 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Una imagen o momento descrito y convertido en canción</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Imagen + prompt descriptivo → Suno</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">💬</span><div><div class="ficha-name">DEBATE</div><div class="ficha-hora">16:00 · 30–45 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Tema propuesto por la Manada, entidades o actualidad local</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Voz humana, guion de puntos de vista</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🎧</span><div><div class="ficha-name">CANCIONES SUGERIDAS</div><div class="ficha-hora">17:00 · 30–45 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Peticiones de oyentes / Manada</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Música directa, mínima locución</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">⏰</span><div><div class="ficha-name">RECORDATORIO 22 MINUTOS</div><div class="ficha-hora">18:00 · 5–8 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Resumen de titulares del bloque de las 11h para quien no pudo escucharlo</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Voz humana o HeyGen</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🌙</span><div><div class="ficha-name">NANAS</div><div class="ficha-hora">21:00 · 20 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Música suave para cerrar el día</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Suno, estilo nana/ambient</div></div>
           </div>
- 
+
           <div class="ficha-card">
             <div class="ficha-head"><span class="ficha-emoji">🎤</span><div><div class="ficha-name">DE TARAREOS A CANCIONES</div><div class="ficha-hora">21:22 · 20–30 min</div></div></div>
             <div class="ficha-field"><div class="ficha-field-label">Contenido</div><div class="ficha-field-val">Tarareos enviados por la Manada, transformados en canción completa</div></div>
             <div class="ficha-field"><div class="ficha-field-label">Producción</div><div class="ficha-field-val">Audio tarareado → Suno</div></div>
           </div>
- 
+
         </div>
- 
+
         <div class="divider"></div>
         <div class="radar-label reveal">🌱 Otras ideas en el radar</div>
- 
+
         <div class="programs-grid reveal">
- 
+
           <div class="program-card">
             <div class="program-emoji">☀️</div>
             <div class="program-info">
@@ -1135,7 +1141,7 @@
             </div>
             <div class="prog-status status-live">🔴 Activo</div>
           </div>
- 
+
           <div class="program-card">
             <div class="program-emoji">🎛️</div>
             <div class="program-info">
@@ -1147,7 +1153,7 @@
             </div>
             <div class="prog-status status-live">🔴 Activo</div>
           </div>
- 
+
           <div class="program-card">
             <div class="program-emoji">📰</div>
             <div class="program-info">
@@ -1159,7 +1165,7 @@
             </div>
             <div class="prog-status status-soon">🟡 Próximo</div>
           </div>
- 
+
           <div class="program-card">
             <div class="program-emoji">🎙️</div>
             <div class="program-info">
@@ -1171,7 +1177,7 @@
             </div>
             <div class="prog-status status-soon">🟡 Próximo</div>
           </div>
- 
+
           <div class="program-card">
             <div class="program-emoji">🌍</div>
             <div class="program-info">
@@ -1183,7 +1189,7 @@
             </div>
             <div class="prog-status status-idea">💡 Idea</div>
           </div>
- 
+
           <div class="program-card">
             <div class="program-emoji">🎉</div>
             <div class="program-info">
@@ -1195,16 +1201,16 @@
             </div>
             <div class="prog-status status-idea">💡 Idea</div>
           </div>
- 
+
         </div>
- 
+
         <div class="divider"></div>
         <div class="about-text reveal" style="font-family: var(--font-cond); font-size: 14px; color: var(--muted); line-height: 1.9;">
           ¿Tienes idea de programa? → Ve a <strong style="color: var(--amber);">COLABORA → Proponer Programa</strong>
         </div>
       </div>
     </div><!-- /tab-programas -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          TAB: COLABORA
          3 sub-formularios con tabs
@@ -1213,7 +1219,7 @@
       <div class="section">
         <div class="section-title reveal">COLABORA</div>
         <div class="section-sub reveal">Proponer · Participar · Aportar · Enviar</div>
- 
+
         <!-- SUB-TABS DE FORMULARIOS -->
         <div class="form-tabs-wrap reveal">
           <button class="form-tab active" data-form="proponer">📋 Proponer Programa</button>
@@ -1226,7 +1232,7 @@
           <button class="form-tab" data-form="imagen">🖼️ Imagen → Canción</button>
           <button class="form-tab" data-form="publicidad">📢 Publicidad</button>
         </div>
- 
+
         <!-- ── FORMULARIO 1: PROPONER PROGRAMA ── -->
         <div class="form-panel active" id="form-proponer">
           <div class="form-intro">
@@ -1293,7 +1299,7 @@
             <button class="btn-submit" onclick="submitForm('proponer')">📤 ENVIAR PROPUESTA</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 2: COLABORAR ── -->
         <div class="form-panel" id="form-colaborar">
           <div class="form-intro">
@@ -1356,7 +1362,7 @@
             <button class="btn-submit" onclick="submitForm('colaborar')">📤 ENVIAR SOLICITUD</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 3: IDEA / NOTICIA ── -->
         <div class="form-panel" id="form-idea">
           <div class="form-intro">
@@ -1391,7 +1397,7 @@
             <button class="btn-submit" onclick="submitForm('idea')">📤 ENVIAR IDEA</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 4: APORTAR A UN PROGRAMA ── -->
         <div class="form-panel" id="form-aportar">
           <div class="form-intro">
@@ -1451,7 +1457,7 @@
             <button class="btn-submit" onclick="submitForm('aportar')">📤 ENVIAR APORTACIÓN</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 5: PROPUESTA COMUNITARIA ── -->
         <div class="form-panel" id="form-propuesta">
           <div class="form-intro">
@@ -1494,7 +1500,7 @@
             <button class="btn-submit" onclick="submitForm('propuesta')">📤 ENVIAR PROPUESTA</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 6: PETICIÓN ── -->
         <div class="form-panel" id="form-peticion">
           <div class="form-intro">
@@ -1536,7 +1542,7 @@
             <button class="btn-submit" onclick="submitForm('peticion')">📤 ENVIAR PETICIÓN</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 7: TEMA DE DEBATE ── -->
         <div class="form-panel" id="form-debate">
           <div class="form-intro">
@@ -1569,7 +1575,7 @@
             <button class="btn-submit" onclick="submitForm('debate')">📤 ENVIAR TEMA</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 8: IMAGEN → CANCIÓN ── -->
         <div class="form-panel" id="form-imagen">
           <div class="form-intro">
@@ -1602,7 +1608,7 @@
             <button class="btn-submit" onclick="submitForm('imagen')">📤 ENVIAR IMAGEN</button>
           </div>
         </div>
- 
+
         <!-- ── FORMULARIO 9: PUBLICIDAD ── -->
         <div class="form-panel" id="form-publicidad">
           <div class="form-intro">
@@ -1641,10 +1647,10 @@
             <button class="btn-submit" onclick="submitForm('publicidad')">📤 ENVIAR PUBLICIDAD</button>
           </div>
         </div>
- 
+
       </div>
     </div><!-- /tab-colabora -->
- 
+
     <!-- ═══════════════════════════════════════════════════════
          FOOTER
     ═══════════════════════════════════════════════════════ -->
@@ -1665,9 +1671,9 @@
         Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺
       </div>
     </footer>
- 
+
   </div><!-- /page -->
- 
+
   <!-- ═══════════════════════════════════════════════════════
        JAVASCRIPT — Tabs, Formularios, Clock, Ticker, Reveal
   ═══════════════════════════════════════════════════════ -->
@@ -1683,15 +1689,15 @@
   //  (Aportar a un Programa · Propuesta Comunitaria · Petición ·
   //  Tema de Debate · Imagen → Canción · Publicidad).
   // ══════════════════════════════════════════════════════════════
- 
+
   // ── TICKER ANIMADO ────────────────────────────────────────────────────
   function initTicker() {
-    const text = '📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · RADIO INDEPENDIENTE DESDE SANT SALVADOR, TARRAGONA · OPEN FORMAT · SIN JERARQUÍAS · PARA TOD@S · VERMUT DOMINICAL CADA DOMINGO 12H · 709+ TRACKS · V2 EN CONSTRUCCIÓN · WORLDMOS · AGUAFLOW · DPNGAME · ¡AUUUAUUU! 🐺 · ';
+    const text = '📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · RADIO INDEPENDIENTE DESDE SANT SALVADOR, TARRAGONA · OPEN FORMAT · SIN JERARQUÍAS · PARA TOD@S · VERMUT DOMINICAL CADA DOMINGO 12H · 1.397 TRACKS · V2 EN CONSTRUCCIÓN · WORLDMOS · AGUAFLOW · DPNGAME · ¡AUUUAUUU! 🐺 · ';
     const full = text.repeat(4);
     const track = document.getElementById('tickerTrack');
     track.innerHTML = '<span>' + full + '</span><span>' + full + '</span>';
   }
- 
+
   // ── RELOJ EN TIEMPO REAL ──────────────────────────────────────────────
   function initClock() {
     function tick() {
@@ -1707,8 +1713,19 @@
     tick();
     setInterval(tick, 1000);
   }
- 
+
   // ── NAVEGACIÓN: TABS PRINCIPALES ─────────────────────────────────────
+  // goToTab(): salta a una pestaña por id, desde cualquier botón/enlace de la página
+  function goToTab(id) {
+    var tab = document.querySelector('.nav-tab[data-tab="' + id + '"]');
+    if (tab) tab.click();
+  }
+  // Al cargar: si venimos con #tab-xxx (p.ej. desde brm.worldmos.world), activar esa pestaña
+  window.addEventListener('DOMContentLoaded', function() {
+    var h = (location.hash || '').replace('#tab-', '');
+    if (h) goToTab(h);
+  });
+
   document.querySelectorAll('.nav-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       var id = tab.dataset.tab;
@@ -1736,7 +1753,7 @@
       }
     });
   });
- 
+
   // ── NAVEGACIÓN: SUB-TABS DE FORMULARIOS ──────────────────────────────
   document.querySelectorAll('.form-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
@@ -1748,20 +1765,20 @@
       if (panel) panel.classList.add('active');
     });
   });
- 
+
   // ── FORMULARIOS — SUBMIT VIA MAILTO ───────────────────────────────────
   // Cambia este email por el que quieras usar como destino
   var CONTACT_EMAIL = 'rubenrodriguez.f.93@gmail.com';
- 
+
   function getVal(id) {
     var el = document.getElementById(id);
     return el ? (el.value || '').trim() : '';
   }
- 
+
   function submitForm(type) {
     var subject = '';
     var body = '';
- 
+
     if (type === 'proponer') {
       // ── Formulario 1: Proponer Programa
       var nombre  = getVal('p-nombre');
@@ -1772,12 +1789,12 @@
       var contact = getVal('p-contacto');
       var email   = getVal('p-email');
       var msg     = getVal('p-mensaje');
- 
+
       if (!nombre || !tipo || !desc || !contact || !email) {
         toast('⚠️ Rellena los campos obligatorios marcados con *');
         return;
       }
- 
+
       subject = '[BRM] Propuesta de programa: ' + nombre;
       body = '=== PROPUESTA DE PROGRAMA — BRM INFO & PROGRAMAS ===\n\n'
         + 'NOMBRE DEL PROGRAMA: ' + nombre + '\n'
@@ -1791,7 +1808,7 @@
         + (msg ? 'NOTAS ADICIONALES:\n' + msg + '\n\n' : '')
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'colaborar') {
       // ── Formulario 2: Colaborar
       var c_nombre = getVal('c-nombre');
@@ -1801,12 +1818,12 @@
       var c_zona   = getVal('c-zona');
       var c_exp    = getVal('c-experiencia');
       var c_msg    = getVal('c-mensaje');
- 
+
       if (!c_nombre || !c_email || !c_rol || !c_msg) {
         toast('⚠️ Rellena los campos obligatorios marcados con *');
         return;
       }
- 
+
       subject = '[BRM] Solicitud de colaboración: ' + c_rol + ' — ' + c_nombre;
       body = '=== SOLICITUD DE COLABORACIÓN — BRM INFO & PROGRAMAS ===\n\n'
         + 'NOMBRE/ALIAS: ' + c_nombre + '\n'
@@ -1818,7 +1835,7 @@
         + 'MOTIVACIÓN Y PROPUESTA:\n' + c_msg + '\n\n'
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'idea') {
       // ── Formulario 3: Idea / Noticia
       var i_tema  = getVal('i-tema');
@@ -1826,12 +1843,12 @@
       var i_desc  = getVal('i-desc');
       var i_url   = getVal('i-url');
       var i_email = getVal('i-email');
- 
+
       if (!i_tema || !i_desc) {
         toast('⚠️ El tema y la descripción son obligatorios');
         return;
       }
- 
+
       subject = '[BRM] Idea / Noticia: ' + i_tema;
       body = '=== IDEA / NOTICIA — BRM INFO & PROGRAMAS ===\n\n'
         + 'TEMA: ' + i_tema + '\n'
@@ -1841,7 +1858,7 @@
         + '\nDESCRIPCIÓN:\n' + i_desc + '\n\n'
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'aportar') {
       // ── Formulario 4: Aportar a un Programa
       var ap_nombre   = getVal('ap-nombre');
@@ -1850,12 +1867,12 @@
       var ap_formato  = getVal('ap-formato');
       var ap_voz      = getVal('ap-voz');
       var ap_contacto = getVal('ap-contacto');
- 
+
       if (!ap_nombre || !ap_programa || !ap_aporte) {
         toast('⚠️ Rellena los campos obligatorios marcados con *');
         return;
       }
- 
+
       subject = '[BRM] Aportación a programa: ' + ap_programa + ' — ' + ap_nombre;
       body = '=== APORTACIÓN A UN PROGRAMA — BRM INFO & PROGRAMAS ===\n\n'
         + 'NOMBRE / COLECTIVO: ' + ap_nombre + '\n'
@@ -1866,7 +1883,7 @@
         + (ap_contacto ? 'CONTACTO (no se emite): ' + ap_contacto + '\n\n' : '')
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'propuesta') {
       // ── Formulario 5: Propuesta Comunitaria
       var pr_nombre    = getVal('pr-nombre');
@@ -1875,12 +1892,12 @@
       var pr_beneficia = getVal('pr-beneficia');
       var pr_respuesta = getVal('pr-respuesta');
       var pr_fecha     = getVal('pr-fecha');
- 
+
       if (!pr_nombre || !pr_titulo || !pr_desc) {
         toast('⚠️ Rellena los campos obligatorios marcados con *');
         return;
       }
- 
+
       subject = '[BRM] Propuesta comunitaria: ' + pr_titulo;
       body = '=== PROPUESTA COMUNITARIA — BRM INFO & PROGRAMAS ===\n\n'
         + 'NOMBRE / COLECTIVO: ' + pr_nombre + '\n'
@@ -1891,7 +1908,7 @@
         + 'DESCRIPCIÓN:\n' + pr_desc + '\n\n'
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'peticion') {
       // ── Formulario 6: Petición
       var pe_nombre    = getVal('pe-nombre');
@@ -1899,12 +1916,12 @@
       var pe_contexto  = getVal('pe-contexto');
       var pe_urgencia  = getVal('pe-urgencia');
       var pe_mencionar = getVal('pe-mencionar');
- 
+
       if (!pe_necesita) {
         toast('⚠️ Cuéntanos qué necesitas');
         return;
       }
- 
+
       subject = '[BRM] Petición a la Manada' + (pe_nombre ? ' — ' + pe_nombre : ' (anónima)');
       body = '=== PETICIÓN A LA MANADA — BRM INFO & PROGRAMAS ===\n\n'
         + 'NOMBRE: ' + (pe_nombre || 'Anónimo') + '\n'
@@ -1914,7 +1931,7 @@
         + (pe_contexto ? 'CONTEXTO:\n' + pe_contexto + '\n\n' : '')
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'debate') {
       // ── Formulario 7: Tema de Debate
       var db_tema       = getVal('db-tema');
@@ -1922,12 +1939,12 @@
       var db_punto1     = getVal('db-punto1');
       var db_punto2     = getVal('db-punto2');
       var db_pregunta   = getVal('db-pregunta');
- 
+
       if (!db_tema || !db_punto1) {
         toast('⚠️ Rellena los campos obligatorios marcados con *');
         return;
       }
- 
+
       subject = '[BRM] Tema de debate: ' + db_tema;
       body = '=== TEMA DE DEBATE — BRM INFO & PROGRAMAS ===\n\n'
         + 'TEMA: ' + db_tema + '\n\n'
@@ -1937,7 +1954,7 @@
         + (db_pregunta ? 'PREGUNTA PARA LA MANADA:\n' + db_pregunta + '\n\n' : '')
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'imagen') {
       // ── Formulario 8: Imagen → Canción
       var im_titulo      = getVal('im-titulo');
@@ -1945,12 +1962,12 @@
       var im_emocion     = getVal('im-emocion');
       var im_estilo      = getVal('im-estilo');
       var im_autoria     = getVal('im-autoria');
- 
+
       if (!im_titulo || !im_descripcion) {
         toast('⚠️ Título y descripción visual son obligatorios');
         return;
       }
- 
+
       subject = '[BRM] Imagen → Canción: ' + im_titulo;
       body = '=== IMAGEN → CANCIÓN — BRM INFO & PROGRAMAS ===\n\n'
         + 'TÍTULO: ' + im_titulo + '\n'
@@ -1960,7 +1977,7 @@
         + 'DESCRIPCIÓN VISUAL:\n' + im_descripcion + '\n\n'
         + '---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
- 
+
     } else if (type === 'publicidad') {
       // ── Formulario 9: Publicidad
       var pu_entidad    = getVal('pu-entidad');
@@ -1969,12 +1986,12 @@
       var pu_publico    = getVal('pu-publico');
       var pu_mensaje    = getVal('pu-mensaje');
       var pu_enlace     = getVal('pu-enlace');
- 
+
       if (!pu_entidad || !pu_actividad) {
         toast('⚠️ Entidad y actividad son obligatorias');
         return;
       }
- 
+
       subject = '[BRM] Publicidad: ' + pu_entidad + ' — ' + pu_actividad;
       body = '=== PUBLICIDAD A DIFUNDIR — BRM INFO & PROGRAMAS ===\n\n'
         + 'ENTIDAD / COLECTIVO: ' + pu_entidad + '\n'
@@ -1986,16 +2003,16 @@
         + '\n---\nEnviado desde brm.worldmos.info · BRM Info & Programas\n'
         + 'DEVBU93 · WorldMOS · AguaFlow · DPN-Game · ¡AUUUAUUU! 🐺';
     }
- 
+
     // Construir y abrir el enlace mailto
     var mailto = 'mailto:' + CONTACT_EMAIL
       + '?subject=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(body);
- 
+
     window.location.href = mailto;
     setTimeout(function() { toast('📤 Abriendo tu cliente de correo...'); }, 300);
   }
- 
+
   // ── REVEAL SCROLL ANIMATION ───────────────────────────────────────────
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
@@ -2005,12 +2022,12 @@
       }
     });
   }, { threshold: 0.08 });
- 
+
   function triggerReveal(scope) {
     var targets = (scope || document).querySelectorAll('.reveal:not(.visible)');
     targets.forEach(function(el) { revealObserver.observe(el); });
   }
- 
+
   // ── TOAST NOTIFICACIONES ──────────────────────────────────────────────
   function toast(msg, duration) {
     duration = duration || 3500;
@@ -2024,13 +2041,18 @@
       setTimeout(function() { el.remove(); }, 400);
     }, duration);
   }
- 
+
   // ── INIT ALL ──────────────────────────────────────────────────────────
   initTicker();
   initClock();
   triggerReveal();
   setTimeout(function() { toast('📻 BRM · INFO & PROGRAMAS · brm.worldmos.info'); }, 800);
   </script>
- 
+
 </body>
 </html>
+
+
+
+
+
