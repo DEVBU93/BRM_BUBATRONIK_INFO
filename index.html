@@ -768,11 +768,7 @@
     <nav class="nav-tabs" role="tablist" aria-label="Secciones de BRM Info">
       <button class="nav-tab active" data-tab="inicio"     role="tab" aria-selected="true">🏠 INICIO</button>
       <button class="nav-tab"        data-tab="queesbrm"   role="tab">📡 QUÉ ES BRM</button>
-      <button class="nav-tab"        data-tab="manada"     role="tab">🐺 LA MANADA</button>
-      <button class="nav-tab"        data-tab="v1actual"   role="tab">🎵 V1 ACTUAL</button>
-      <button class="nav-tab"        data-tab="visionv2"   role="tab">🚀 VISIÓN V2</button>
       <button class="nav-tab"        data-tab="programas"  role="tab">📋 PROGRAMAS</button>
-      <button class="nav-tab"        data-tab="teambuilding" role="tab">🏢 TEAM BUILDING</button>
       <button class="nav-tab"        data-tab="colabora"   role="tab">🤝 COLABORA</button>
     </nav>
 
@@ -781,26 +777,6 @@
          Contiene: player mini + manifiesto + V1 vs V2
     ═══════════════════════════════════════════════════════ -->
     <div class="tab-panel active" id="tab-inicio">
-
-      <!-- BRIDGE: sin reproductor — .info explica, .world hace sonar -->
-      <div class="bridge-hero reveal">
-        <div class="bridge-live-dot"></div>
-        <div class="bridge-content">
-          <div class="bridge-eyebrow">📻 BUBATRONIK RADIO · EN EMISIÓN 24/7 · 666.333</div>
-          <a class="bridge-cta" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">🔊 Escuchar BUBATRONIK RADIO en Directo</a>
-          <a class="bridge-cta" href="https://brm.worldmos.world" target="_blank" rel="noopener">🎛️ Escuchar Oraculo Bubatronik </a>
-          <a class="bridge-cta" href="https://brm.worldmos.es" target="_blank" rel="noopener"> 🚨 PING Emergencias  </a>
-          <div class="bridge-tagline">enlaces de interés.</div>
-        </div>
-      </div>
-
-      <div class="bridge-strip reveal">
-        <a class="bridge-strip-item" href="https://brm.worldmos.world#tab-programacion" target="_blank" rel="noopener"><span>📅</span> Programación</a>
-        <a class="bridge-strip-item" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener"><span>💾</span> Archivo de sesiones</a>
-        <a class="bridge-strip-item" href="#tab-colabora" onclick="goToTab('colabora'); return false;"><span>🎙️</span> Proponer un programa</a>
-      </div>
-
-      <!-- Links secundarios (Instagram, stream nativo) siguen accesibles en el footer -->
 
       <!-- MANIFIESTO -->
       <div class="section">
@@ -819,55 +795,26 @@
           <p><em>¡AUUUAUUU! 🐺 — La manada es tod@s. La manada somos.</em></p>
         </div>
 
-        <div class="divider"></div>
-
-        <!-- V1 vs V2 dentro del INICIO -->
-        <div class="section-title reveal" style="font-size: clamp(18px, 2.5vw, 32px); margin-bottom: 6px;">V1 vs V2</div>
-        <div class="section-sub reveal">Lo que hay ahora · Lo que viene</div>
-
-        <div class="v1v2-grid reveal">
-          <!-- V1 ACTUAL -->
-          <div class="v-card v1-card">
-            <div class="v-card-header">
-              <div class="v-version">V1</div>
-              <div class="v-card-meta">
-                <div class="v-card-title">LO QUE HAY AHORA</div>
-                <div class="v-card-status">✓ Activo · Funcionando · Real</div>
-              </div>
-            </div>
-            <div class="v-items">
-              <div class="v-item"><span class="v-item-bullet">🎵</span><span class="v-item-text"><strong>Música 24/7</strong> — Stream continuo, sin pausa, sin algoritmos</span></div>
-              <div class="v-item"><span class="v-item-bullet">📀</span><span class="v-item-text"><strong>1.397 tracks</strong> curados manualmente — géneros variados Open Format</span></div>
-              <div class="v-item"><span class="v-item-bullet">🎛️</span><span class="v-item-text"><strong>Sesiones Numeradas</strong> (21+) de 4–6h, grabadas, acceso libre Drive</span></div>
-              <div class="v-item"><span class="v-item-bullet">☀️</span><span class="v-item-text"><strong>Vermut Dominical</strong> — cada domingo 12h, ritual obligatorio de la manada</span></div>
-              <div class="v-item"><span class="v-item-bullet">🌐</span><span class="v-item-text"><strong>brm.worldmos.world</strong> — web completa con player, playlist, info</span></div>
-              <div class="v-item"><span class="v-item-bullet">📡</span><span class="v-item-text"><strong>Shoutcast 128kbps</strong> via Cloudflare Worker proxy HTTPS</span></div>
-              <div class="v-item"><span class="v-item-bullet">💾</span><span class="v-item-text"><strong>Archivo libre</strong> en Google Drive, sin suscripciones ni registro</span></div>
-            </div>
-          </div>
-
-          <!-- V2 VISIÓN -->
-          <div class="v-card v2-card">
-            <div class="v-card-header">
-              <div class="v-version">V2</div>
-              <div class="v-card-meta">
-                <div class="v-card-title">LO QUE VIENE</div>
-                <div class="v-card-status">🚧 En desarrollo · No tan ficticio</div>
-              </div>
-            </div>
-            <div class="v-items">
-              <div class="v-item"><span class="v-item-bullet">🎙️</span><span class="v-item-text"><strong>Debates y programas</strong> — no solo música, también ideas y conversación</span></div>
-              <div class="v-item"><span class="v-item-bullet">📰</span><span class="v-item-text"><strong>Noticias por zonas</strong> — Camp de Tarragona, Cataluña y lo relevante</span></div>
-              <div class="v-item"><span class="v-item-bullet">🤖</span><span class="v-item-text"><strong>IA integrada</strong> — resumen de noticias, generación de contenido automático</span></div>
-              <div class="v-item"><span class="v-item-bullet">📱</span><span class="v-item-text"><strong>Automatización</strong> Telegram, WhatsApp, Facebook — la manada conectada</span></div>
-              <div class="v-item"><span class="v-item-bullet">🖼️</span><span class="v-item-text"><strong>Fotos → canciones</strong> — IA genera audio a partir de imágenes del barrio</span></div>
-              <div class="v-item"><span class="v-item-bullet">🌍</span><span class="v-item-text"><strong>Comunidad ampliada</strong> — más allá del barrio, sin perder las raíces</span></div>
-              <div class="v-item"><span class="v-item-bullet">⚙️</span><span class="v-item-text"><strong>N8N / Make</strong> — automatización completa de todos los flujos</span></div>
-            </div>
-          </div>
+        <div class="divider"></div
+      <!-- BRIDGE: sin reproductor — .info explica, .world hace sonar -->
+      <div class="bridge-hero reveal">
+        <div class="bridge-live-dot"></div>
+        <div class="bridge-content">
+          <div class="bridge-eyebrow">📻 BUBATRONIK RADIO · EN EMISIÓN 24/7 · 666.333</div>
+          <a class="bridge-cta" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">🔊 Escuchar BUBATRONIK RADIO en Directo</a>
+          <a class="bridge-cta" href="https://brm.worldmos.world" target="_blank" rel="noopener">🎛️ Escuchar Oraculo Bubatronik </a>
+          <a class="bridge-cta" href="https://brm.worldmos.es" target="_blank" rel="noopener"> 🚨 PING Emergencias  </a>
+          <div class="bridge-tagline">enlaces de interés.</div>
         </div>
       </div>
 
+     <!-- <div class="bridge-strip reveal">
+        <a class="bridge-strip-item" href="https://brm.worldmos.world#tab-programacion" target="_blank" rel="noopener"><span>📅</span> Programación</a>
+        <a class="bridge-strip-item" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener"><span>💾</span> Archivo de sesiones</a>
+        <a class="bridge-strip-item" href="#tab-colabora" onclick="goToTab('colabora'); return false;"><span>🎙️</span> Proponer un programa</a>
+      </div>
+
+       Links secundarios (Instagram, stream nativo) siguen accesibles en el footer -->
     </div><!-- /tab-inicio -->
 
     <!-- ═══════════════════════════════════════════════════════
@@ -948,7 +895,7 @@
           </div>
         </div>
       </div>
-    </div><!-- /tab-queesbrm -->
+
 
     <!-- ═══════════════════════════════════════════════════════
          TAB: LA MANADA
@@ -956,7 +903,7 @@
            .info reúne toda la identidad/comunidad, .world queda para lo
            sonoro y descargable.
     ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-manada">
+
       <div class="two-col-380">
         <div style="border-right:1px solid var(--border);padding:36px;">
           <div class="tb-headline reveal">BUBATRONIK RADIO</div>
@@ -997,13 +944,55 @@
           </div>
         </div>
       </div>
-    </div><!-- /tab-manada -->
 
+ <!-- V1 vs V2 dentro del INICIO -->
+        <div class="section-title reveal" style="font-size: clamp(18px, 2.5vw, 32px); margin-bottom: 6px;">V1 vs V2</div>
+        <div class="section-sub reveal">Lo que hay ahora · Lo que viene</div>
 
+        <div class="v1v2-grid reveal">
+          <!-- V1 ACTUAL -->
+          <div class="v-card v1-card">
+            <div class="v-card-header">
+              <div class="v-version">V1</div>
+              <div class="v-card-meta">
+                <div class="v-card-title">LO QUE HAY AHORA</div>
+                <div class="v-card-status">✓ Activo · Funcionando · Real</div>
+              </div>
+            </div>
+            <div class="v-items">
+              <div class="v-item"><span class="v-item-bullet">🎵</span><span class="v-item-text"><strong>Música 24/7</strong> — Stream continuo, sin pausa, sin algoritmos</span></div>
+              <div class="v-item"><span class="v-item-bullet">📀</span><span class="v-item-text"><strong>1.397 tracks</strong> curados manualmente — géneros variados Open Format</span></div>
+              <div class="v-item"><span class="v-item-bullet">🎛️</span><span class="v-item-text"><strong>Sesiones Numeradas</strong> (21+) de 4–6h, grabadas, acceso libre Drive</span></div>
+              <div class="v-item"><span class="v-item-bullet">☀️</span><span class="v-item-text"><strong>Vermut Dominical</strong> — cada domingo 12h, ritual obligatorio de la manada</span></div>
+              <div class="v-item"><span class="v-item-bullet">🌐</span><span class="v-item-text"><strong>brm.worldmos.world</strong> — web completa con player, playlist, info</span></div>
+              <div class="v-item"><span class="v-item-bullet">📡</span><span class="v-item-text"><strong>Shoutcast 128kbps</strong> via Cloudflare Worker proxy HTTPS</span></div>
+              <div class="v-item"><span class="v-item-bullet">💾</span><span class="v-item-text"><strong>Archivo libre</strong> en Google Drive, sin suscripciones ni registro</span></div>
+            </div>
+          </div>
+
+          <!-- V2 VISIÓN -->
+          <div class="v-card v2-card">
+            <div class="v-card-header">
+              <div class="v-version">V2</div>
+              <div class="v-card-meta">
+                <div class="v-card-title">LO QUE VIENE</div>
+                <div class="v-card-status">🚧 En desarrollo · No tan ficticio</div>
+              </div>
+            </div>
+            <div class="v-items">
+              <div class="v-item"><span class="v-item-bullet">🎙️</span><span class="v-item-text"><strong>Debates y programas</strong> — no solo música, también ideas y conversación</span></div>
+              <div class="v-item"><span class="v-item-bullet">📰</span><span class="v-item-text"><strong>Noticias por zonas</strong> — Camp de Tarragona, Cataluña y lo relevante</span></div>
+              <div class="v-item"><span class="v-item-bullet">🤖</span><span class="v-item-text"><strong>IA integrada</strong> — resumen de noticias, generación de contenido automático</span></div>
+              <div class="v-item"><span class="v-item-bullet">📱</span><span class="v-item-text"><strong>Automatización</strong> Telegram, WhatsApp, Facebook — la manada conectada</span></div>
+              <div class="v-item"><span class="v-item-bullet">🖼️</span><span class="v-item-text"><strong>Fotos → canciones</strong> — IA genera audio a partir de imágenes del barrio</span></div>
+              <div class="v-item"><span class="v-item-bullet">🌍</span><span class="v-item-text"><strong>Comunidad ampliada</strong> — más allá del barrio, sin perder las raíces</span></div>
+              <div class="v-item"><span class="v-item-bullet">⚙️</span><span class="v-item-text"><strong>N8N / Make</strong> — automatización completa de todos los flujos</span></div>
+            </div>
+          </div>
+        </div>
     <!-- ═══════════════════════════════════════════════════════
          TAB: V1 ACTUAL
     ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-v1actual">
       <div class="section">
         <div class="section-title reveal">V1 · LO QUE HAY</div>
         <div class="section-sub reveal">Estado actual · Activo · Funcionando · Real</div>
@@ -1061,12 +1050,10 @@
           <span class="gtag hot">Open Format ∞</span>
         </div>
       </div>
-    </div><!-- /tab-v1actual -->
 
     <!-- ═══════════════════════════════════════════════════════
          TAB: VISIÓN V2
     ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-visionv2">
       <div class="section">
         <div class="section-title reveal">VISIÓN V2</div>
         <div class="section-sub reveal">Lo que viene · En construcción · No es Matrix · Es posible</div>
@@ -1122,7 +1109,44 @@
           <span class="cf-ok">✓ Manada informada, manada conectada, manada activa</span>
         </div>
       </div>
-    </div><!-- /tab-visionv2 -->
+
+          <!-- ═══════════════════════════════════════════════════════
+         TAB: TEAM BUILDING
+         — movida desde brm.worldmos.world a petición de Rubén (2026-08)
+    ═══════════════════════════════════════════════════════ -->
+      <div class="tb-section reveal">
+        <div class="tb-headline">TEAM BUILDING REAL</div>
+        <div class="tb-sub">La herramienta de cohesión que ninguna consultora puede replicar</div>
+        <p class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:700px;margin-bottom:32px;letter-spacing:0.5px;">BRM_Bubatronik no es un proveedor de team building al uso. Es un espacio vivo donde la música hace el trabajo que los PowerPoints jamás consiguieron: crear ambiente de equipo real, sin forzarlo, sin actividades vacías.</p>
+        <div class="tb-cards reveal">
+          <div class="tb-card"><span class="tb-icon">🎶</span><div class="tb-card-title">La música hace el trabajo</div><div class="tb-card-desc">Sesión en directo de 4–6h mientras el equipo trabaja, celebra o simplemente comparte tiempo. La gente se une por algo que le gusta, no por obligación corporativa.</div></div>
+          <div class="tb-card"><span class="tb-icon">🌍</span><div class="tb-card-title">Equipos dispersos geográficamente</div><div class="tb-card-desc">Ideal para empresas con equipos en múltiples países. El stream funciona como hilo conductor común que atraviesa fronteras sin billetes de avión.</div></div>
+          <div class="tb-card"><span class="tb-icon">🎉</span><div class="tb-card-title">Eventos de empresa que se recuerdan</div><div class="tb-card-desc">Fiesta de empresa con sesión BRM en directo = recuerdo real, no PowerPoint. La manada crea ambiente; la consultora solo lo cobra.</div></div>
+          <div class="tb-card"><span class="tb-icon">☀️</span><div class="tb-card-title">El Vermut como protocolo</div><div class="tb-card-desc">Domingo 12h, vermut obligatorio para el equipo, sesión en vivo. Es el ritual más sencillo y efectivo de cohesión que existe. Y sin consultora de por medio.</div></div>
+          <div class="tb-card"><span class="tb-icon">🎙️</span><div class="tb-card-title">Alternativa a lo vacío</div><div class="tb-card-desc">Kata Bowling, paintball, escape rooms — ya los ha visto todo el mundo. Una sesión de 6h de música real, en buena compañía, crea vínculos duraderos.</div></div>
+          <div class="tb-card"><span class="tb-icon">📧</span><div class="tb-card-title">Contacta para tu evento</div><div class="tb-card-desc">¿Tu empresa necesita cohesión real? Hablemos. Sesión en directo, vermut corporativo, o sesión grabada para vuestros eventos.</div></div>
+        </div>
+        <div style="margin-top:36px;padding:24px;background:var(--bg3);border:1px solid var(--amber4);border-radius:12px;max-width:600px;" class="reveal">
+          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">¿Quieres BRM en tu evento?</div>
+          <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:16px;">Contacta directamente con Rubén para hablar de sesiones, eventos corporativos o colaboraciones con la manada.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a class="btn-stream primary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="mailto:rubenrodriguez.f.93@gmail.com">📧 CONTACTAR A RUBÉN</a>
+            <a class="btn-stream secondary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="https://brm.worldmos.world" target="_blank" rel="noopener">📻 ESCUCHAR BRM EN DIRECTO</a>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 36px 36px;border-top:1px solid var(--border);">
+        <div class="r-title" style="margin-bottom:12px;">⚖️ ASPECTOS LEGALES<div class="r-title-line"></div></div>
+        <p style="font-size:var(--fs-xs);color:var(--muted);line-height:1.8;max-width:700px;">
+          <strong style="color:var(--white);">Propiedad:</strong> Rubén — BRM_Bubatronik, marca registrable · WORLD-MUNDO OS.<br>
+          <strong style="color:var(--white);">Derechos musicales:</strong> Gestión SGAE/AGEDI para emisión legal en España; licencia de streaming según plataforma.<br>
+          <strong style="color:var(--white);">Datos oyentes:</strong> Mínimos, RGPD compliant, sin tracking agresivo.<br>
+          <strong style="color:var(--white);">Contenido propio (mezclas, sesiones):</strong> Derechos del DJ/creador protegidos.<br>
+          <strong style="color:var(--white);">Emisión:</strong> Radio online comunitaria y cultural — vocación de comunidad real, Camp de Tarragona.
+        </p>
+      </div>
+
+</div><!-- /tab-queesbrm -->
 
     <!-- ═══════════════════════════════════════════════════════
          TAB: PROGRAMAS
@@ -1314,45 +1338,6 @@
         </div>
       </div>
     </div><!-- /tab-programas -->
-
-    <!-- ═══════════════════════════════════════════════════════
-         TAB: TEAM BUILDING
-         — movida desde brm.worldmos.world a petición de Rubén (2026-08)
-    ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-teambuilding">
-      <div class="tb-section reveal">
-        <div class="tb-headline">TEAM BUILDING REAL</div>
-        <div class="tb-sub">La herramienta de cohesión que ninguna consultora puede replicar</div>
-        <p class="reveal" style="font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--muted);line-height:1.8;max-width:700px;margin-bottom:32px;letter-spacing:0.5px;">BRM_Bubatronik no es un proveedor de team building al uso. Es un espacio vivo donde la música hace el trabajo que los PowerPoints jamás consiguieron: crear ambiente de equipo real, sin forzarlo, sin actividades vacías.</p>
-        <div class="tb-cards reveal">
-          <div class="tb-card"><span class="tb-icon">🎶</span><div class="tb-card-title">La música hace el trabajo</div><div class="tb-card-desc">Sesión en directo de 4–6h mientras el equipo trabaja, celebra o simplemente comparte tiempo. La gente se une por algo que le gusta, no por obligación corporativa.</div></div>
-          <div class="tb-card"><span class="tb-icon">🌍</span><div class="tb-card-title">Equipos dispersos geográficamente</div><div class="tb-card-desc">Ideal para empresas con equipos en múltiples países. El stream funciona como hilo conductor común que atraviesa fronteras sin billetes de avión.</div></div>
-          <div class="tb-card"><span class="tb-icon">🎉</span><div class="tb-card-title">Eventos de empresa que se recuerdan</div><div class="tb-card-desc">Fiesta de empresa con sesión BRM en directo = recuerdo real, no PowerPoint. La manada crea ambiente; la consultora solo lo cobra.</div></div>
-          <div class="tb-card"><span class="tb-icon">☀️</span><div class="tb-card-title">El Vermut como protocolo</div><div class="tb-card-desc">Domingo 12h, vermut obligatorio para el equipo, sesión en vivo. Es el ritual más sencillo y efectivo de cohesión que existe. Y sin consultora de por medio.</div></div>
-          <div class="tb-card"><span class="tb-icon">🎙️</span><div class="tb-card-title">Alternativa a lo vacío</div><div class="tb-card-desc">Kata Bowling, paintball, escape rooms — ya los ha visto todo el mundo. Una sesión de 6h de música real, en buena compañía, crea vínculos duraderos.</div></div>
-          <div class="tb-card"><span class="tb-icon">📧</span><div class="tb-card-title">Contacta para tu evento</div><div class="tb-card-desc">¿Tu empresa necesita cohesión real? Hablemos. Sesión en directo, vermut corporativo, o sesión grabada para vuestros eventos.</div></div>
-        </div>
-        <div style="margin-top:36px;padding:24px;background:var(--bg3);border:1px solid var(--amber4);border-radius:12px;max-width:600px;" class="reveal">
-          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">¿Quieres BRM en tu evento?</div>
-          <p style="font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:16px;">Contacta directamente con Rubén para hablar de sesiones, eventos corporativos o colaboraciones con la manada.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a class="btn-stream primary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="mailto:rubenrodriguez.f.93@gmail.com">📧 CONTACTAR A RUBÉN</a>
-            <a class="btn-stream secondary" style="display:inline-block;text-decoration:none;padding:12px 24px;border-radius:6px;" href="https://brm.worldmos.world" target="_blank" rel="noopener">📻 ESCUCHAR BRM EN DIRECTO</a>
-          </div>
-        </div>
-      </div>
-      <div style="padding:24px 36px 36px;border-top:1px solid var(--border);">
-        <div class="r-title" style="margin-bottom:12px;">⚖️ ASPECTOS LEGALES<div class="r-title-line"></div></div>
-        <p style="font-size:var(--fs-xs);color:var(--muted);line-height:1.8;max-width:700px;">
-          <strong style="color:var(--white);">Propiedad:</strong> Rubén — BRM_Bubatronik, marca registrable · WORLD-MUNDO OS.<br>
-          <strong style="color:var(--white);">Derechos musicales:</strong> Gestión SGAE/AGEDI para emisión legal en España; licencia de streaming según plataforma.<br>
-          <strong style="color:var(--white);">Datos oyentes:</strong> Mínimos, RGPD compliant, sin tracking agresivo.<br>
-          <strong style="color:var(--white);">Contenido propio (mezclas, sesiones):</strong> Derechos del DJ/creador protegidos.<br>
-          <strong style="color:var(--white);">Emisión:</strong> Radio online comunitaria y cultural — vocación de comunidad real, Camp de Tarragona.
-        </p>
-      </div>
-    </div><!-- /tab-teambuilding -->
-
 
     <!-- ═══════════════════════════════════════════════════════
          TAB: COLABORA
@@ -1803,11 +1788,6 @@
         <div class="footer-legal">© 2026 DEVBU93 · Rubén Rodríguez Francisco · WORLDMOS · AGUAFLOW · DPNGAME</div>
       </div>
       <div class="footer-links">
-        <a class="footer-link" href="https://brm.worldmos.world" target="_blank" rel="noopener">🛰️ Radio Principal</a>
-        <a class="footer-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener">Instagram</a>
-        <a class="footer-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener">Stream</a>
-        <a class="footer-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener">Sesiones Drive</a>
-        <a class="footer-link" href="mailto:rubenrodriguez.f.93@gmail.com">Email</a>
       </div>
       <div class="footer-copy">
         Sant Salvador · Tarragona · Catalunya · España<br>
