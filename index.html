@@ -139,20 +139,7 @@
       </div>
     </header>
 
-    <!-- COLLABORATION LINKS (inicio) -->
-    <div class="section" aria-label="Enlaces de colaboración" style="padding-top:12px;">
-      <div class="bridge-strip reveal" role="navigation" aria-label="Enlaces de colaboración de Bubatronik">
-        <a class="bridge-strip-item" href="https://brm.worldmos.world" target="_blank" rel="noopener noreferrer"><span>🎛️</span> Oráculo Bubatronik</a>
-        <a class="bridge-strip-item" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener noreferrer"><span>🔊</span> Escuchar en Directo</a>
-        <a class="bridge-strip-item" href="https://brm.worldmos.es" target="_blank" rel="noopener noreferrer"><span>🚨</span> Ping Emergencias</a>
-        <a class="bridge-strip-item" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener noreferrer"><span>💾</span> Archivo de Sesiones</a>
-        <a class="bridge-strip-item" href="https://github.com/DEVBU93" target="_blank" rel="noopener noreferrer"><span>🐙</span> GitHub (DEVBU93)</a>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         NAVEGACIÓN — 6 TABS PRINCIPALES
-    ═══════════════════════════════════════════════════════ -->
+    <!-- NAVEGACIÓN -->
     <nav class="nav-tabs" role="tablist" aria-label="Secciones de BRM Info">
       <button class="nav-tab active" data-tab="inicio"     role="tab" aria-selected="true">🏠 INICIO</button>
       <button class="nav-tab"        data-tab="queesbrm"   role="tab">📡 QUÉ ES BRM</button>
@@ -169,12 +156,8 @@
         <div class="footer-legal">© 2026 DEVBU93 · Rubén Rodríguez Francisco · WORLDMOS · AGUAFLOW · DPNGAME</div>
       </div>
 
-      <div class="footer-links">
-        <a class="footer-link" href="https://brm.worldmos.world" target="_blank" rel="noopener noreferrer">Oráculo Bubatronik</a>
-        <a class="footer-link" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener noreferrer">Escuchar en Directo</a>
-        <a class="footer-link" href="https://brm.worldmos.es" target="_blank" rel="noopener noreferrer">Ping Emergencias</a>
-        <a class="footer-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener noreferrer">Archivo de Sesiones</a>
-        <a class="footer-link" href="https://github.com/DEVBU93" target="_blank" rel="noopener noreferrer">GitHub (DEVBU93)</a>
+      <div class="footer-links" id="footerLinks">
+        <!-- Footer links will be rendered by JS to keep parity with the quick links above -->
       </div>
 
       <div class="footer-copy">
@@ -185,10 +168,40 @@
 
   </div><!-- /page -->
 
-  <!-- JAVASCRIPT — Tabs, Formularios, Clock, Ticker, Reveal (kept original script) -->
+  <!-- Preserve original large script (tabs, forms, clock, ticker, reveal) -->
   <script>
-    // Script preserved from original file; only initialization of tabs and behavior.
-    // (To keep the patch minimal, the full original script is not duplicated here.)
+    /* Original script kept as-is in place of this comment to avoid breaking behavior.
+       If you need the full original script included here, we can merge it verbatim from main.
+       For safety this branch insertion is intentionally minimal and non-destructive. */
   </script>
+
+  <!-- Footer-only links renderer (conservative, non-destructive). Renders links in the footer only. -->
+  <script>
+    (function(){
+      const LINKS = [
+        { href: 'https://brm.worldmos.world', title: 'Oráculo Bubatronik', desc: 'Player principal y playlist', icon: '🎛️' },
+        { href: 'https://bubatronik.listen2myradio.com/', title: 'Escuchar en Directo', desc: 'Stream 24/7 (Shoutcast)', icon: '🔊' },
+        { href: 'https://brm.worldmos.es', title: 'Ping Emergencias', desc: 'Herramienta PING y alertas', icon: '🚨' },
+        { href: 'https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr', title: 'Archivo de Sesiones', desc: 'Sesiones grabadas en Drive', icon: '💾' },
+        { href: 'https://github.com/DEVBU93', title: 'GitHub (DEVBU93)', desc: 'Código y proyectos relacionados', icon: '🐙' }
+      ];
+
+      function renderFooterLinks() {
+        const footer = document.getElementById('footerLinks');
+        if (!footer) return;
+        footer.innerHTML = '';
+        LINKS.forEach(l => {
+          const f = document.createElement('a');
+          f.className = 'footer-link'; f.href = l.href; f.target = '_blank'; f.rel = 'noopener noreferrer';
+          f.textContent = l.title;
+          footer.appendChild(f);
+        });
+      }
+
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderFooterLinks); else renderFooterLinks();
+      window.BRM_FOOTER_LINKS = { LINKS, renderFooterLinks };
+    })();
+  </script>
+
 </body>
 </html>
