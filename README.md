@@ -1,30 +1,40 @@
 # BUBATRONIK BRM INFO
 
-Radio Bubatronik BRM — Información y comunidad en `brm.worldmos.info`.
+BRM · BUBATRONIK RADIO · INFO & PROGRAMAS.
 
-## Descripción
+## Criterio de mantenimiento
 
-Proyecto independiente nacido en Tarragona que mezcla música, tecnología y comunidad para crear un espacio de bienestar, debate y conocimiento para tod@s.
+Este repositorio está evolucionando hacia **menos páginas, más completas y mejor organizadas**, sin perder contenido útil.
 
-## Estructura
+### Arquitectura funcional
 
-```
-BUBATRONIK_BRM_INFO/
-├── index.html          # Web principal
-└── README.md
-```
+- **Emisión / Radio** — estado, escucha y acceso a la emisión.
+- **Programación** — programas, horarios y contenido relacionado.
+- **Información** — identidad, proyecto, enlaces y contexto.
+- **Comunidad** — recursos y participación cuando corresponda.
 
-## Uso
+Antes de crear una página nueva, comprobar si el contenido pertenece naturalmente a uno de estos centros. Si pertenece, debe integrarse como sección o módulo en lugar de dispersarlo.
 
-La web está desplegada en GitHub Pages.
+## Edición puntual
 
-- Dominio: `https://brm.worldmos.info/`
-- Para cambios, edita `index.html` y haz push a `main`.
+Para futuras mejoras, separar mentalmente:
 
-## Dominio
+1. **Contenido** — textos, enlaces, programas y datos.
+2. **Presentación** — estructura HTML y componentes visuales.
+3. **Identidad** — colores, tipografías, espaciados y radios.
 
-Configurado en GoDaddy + GitHub Pages.
+`styles/tokens.css` es la referencia de tokens para nuevas piezas y módulos. El `index.html` actual conserva la interfaz existente para evitar una sustitución destructiva; cualquier migración progresiva debe hacerse por bloques verificables.
 
-## Licencia
+## Reglas de seguridad y estabilidad
 
-CC0-1.0
+- No eliminar contenido existente sin comprobar referencias.
+- No sustituir el `index.html` monolítico completo por una versión nueva sin copia/rollback.
+- Mantener enlaces externos explícitos y protegidos con `rel="noopener noreferrer"` cuando abran una pestaña nueva.
+- No incrustar claves/API secrets en frontend.
+- Preferir fuentes oficiales para información operativa.
+- En cambios visuales, comprobar primero móvil y después escritorio.
+- Agrupar antes de crear nuevas páginas.
+
+## Objetivo
+
+Que BRM INFO pueda seguir creciendo sin convertirse en un conjunto disperso de páginas: **menos dispersión, más profundidad, contenido conservado y cambios puntuales fáciles de mantener**.
