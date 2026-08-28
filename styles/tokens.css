@@ -1,42 +1,37 @@
 :root {
-  /* Colores base */
-  --bg: #08111f;
-  --bg-elevated: #0f1b2e;
-  --panel: #101d30;
-  --line: #223550;
+  /* BRM INFO — shared design tokens. Keep future one-off visual edits here. */
+  --bg: #0a0a0a;
+  --bg-elevated: #0f0f14;
+  --panel: #161620;
+  --panel-2: #1e1e2c;
+  --line: #1e1e32;
+  --line-strong: #2a2a44;
 
-  /* Texto */
-  --text: #e9f1ff;
-  --text-muted: #9eb1cd;
+  --text: #f0ede8;
+  --text-muted: #6a6a7a;
+  --text-dim: #3a3a50;
 
-  /* Acentos */
-  --cyan: #57d5ff;
-  --cyan-dim: #57d5ff33;
-  --green: #5ee6a8;
-  --green-dim: #5ee6a81f;
-  --amber: #ffd166;
-  --amber-dim: #ffd1661f;
-  --orange: #ff9f45;
-  --red: #ff6b7a;
-  --red-bright: #ff3b30;
+  --amber: #f5c518;
+  --amber-strong: #ffd700;
+  --amber-soft: #fff3a0;
+  --amber-dim: rgba(245, 197, 24, 0.08);
+  --red: #ef4444;
+  --green: #10b981;
 
-  /* TipografÃ¬a */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-sans: "Syne", system-ui, sans-serif;
 
-  /* Radios */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
-  /* Sombras */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.45);
 
-  /* Espaciados */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -47,8 +42,17 @@
   --space-10: 40px;
   --space-12: 48px;
 
-  /* Transiciones */
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
   --duration-fast: 120ms;
   --duration-normal: 240ms;
+}
+
+/* Responsive helpers for future modules. The current legacy index remains untouched. */
+@media (max-width: 700px) {
+  :root {
+    --space-6: 18px;
+    --space-8: 24px;
+    --space-10: 28px;
+    --space-12: 34px;
+  }
 }
