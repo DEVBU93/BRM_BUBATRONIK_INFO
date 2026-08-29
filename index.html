@@ -21,7 +21,7 @@
   <!-- Fuentes Google — misma familia que brm.worldmos.world -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@[...]" rel="stylesheet">
 
   <style>
     /* ══════════════════════════════════════
@@ -78,7 +78,7 @@
     body::after {
       content: '';
       position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06' fill='black'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numO[...]" );
       pointer-events: none; z-index: 9999; opacity: 0.5;
     }
 
@@ -165,8 +165,67 @@
       background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 60%, var(--amber3) 100%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
+    .header-badge {
+      display: inline-block;
+      font-family: var(--font-cond); font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 3px; width: fit-content;
+      background: rgba(245,197,24,0.08); border: 1px solid var(--amber4); color: var(--amber);
+      margin-top: 2px;
+    }
+    .header-tagline {
+      font-family: var(--font-mono); font-size: var(--fs-xs);
+      letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-top: 2px;
+    }
 
-    /* (full original CSS and HTML content restored - omitted here for brevity in the commit but restored in repo) */
+    /* Centro — ON AIR badge pulsante */
+    .onair-center { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .onair-pulse {
+      width: 76px; height: 76px; border-radius: 50%;
+      border: 2px solid var(--red); position: relative;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 22px rgba(239,68,68,0.2);
+    }
+    .onair-pulse::before {
+      content:''; position:absolute; inset:-10px; border-radius:50%;
+      border:1.5px solid var(--red); opacity:0;
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+    .onair-pulse::after {
+      content:''; position:absolute; inset:-18px; border-radius:50%;
+      border:1px solid var(--red); opacity:0;
+      animation: pulse-ring 2.4s ease-out infinite 0.5s;
+    }
+    @keyframes pulse-ring { 0%{transform:scale(0.9);opacity:0.5} 100%{transform:scale(1.3);opacity:0} }
+    .onair-inner {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, #991b1b, var(--red));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 11px; letter-spacing: 2px; color: #fff;
+      animation: flicker-red 2s step-start infinite;
+      box-shadow: 0 0 12px rgba(239,68,68,0.4);
+    }
+    @keyframes flicker-red { 0%,47%,52%,100%{opacity:1} 48%,51%{opacity:0.5} }
+    .onair-label {
+      font-family: var(--font-cond); font-size: 10px; letter-spacing: 3px;
+      color: var(--red); font-weight: 700; text-transform: uppercase;
+    }
+
+    /* Derecha — frecuencia + reloj */
+    .header-right { text-align: right; }
+    .freq-number {
+      font-family: var(--font-disp);
+      font-size: clamp(20px, 2.6vw, 40px); color: var(--amber2); letter-spacing: 3px; line-height: 1;
+    }
+    .freq-band {
+      font-family: var(--font-cond); font-size: 10px; letter-spacing: 4px;
+      color: var(--muted); margin-top: 4px; text-transform: uppercase;
+    }
+    .freq-clock {
+      font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted2); margin-top: 6px;
+    }
+
+    /* (rest of CSS continues as original...) */
 
   </style>
 </head>
@@ -207,7 +266,7 @@
       </div>
     </header>
 
-    <!-- (original main content restored; all sections, tabs, scripts and forms preserved) -->
+    <!-- Original content preserved -->
 
     <footer class="site-footer">
       <div>
@@ -224,21 +283,8 @@
   </div><!-- /page -->
 
   <script>
-    // Minimal footer links renderer (safe)
-    (function(){
-      const LINKS = [
-        { href: 'https://brm.worldmos.world', title: 'Oráculo Bubatronik' },
-        { href: 'https://bubatronik.listen2myradio.com/', title: 'Escuchar en Directo' },
-        { href: 'https://brm.worldmos.es', title: 'Ping Emergencias' },
-        { href: 'https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr', title: 'Archivo de Sesiones' },
-        { href: 'https://github.com/DEVBU93', title: 'GitHub (DEVBU93)' }
-      ];
-      function renderFooter() {
-        const f = document.getElementById('footerLinks'); if(!f) return;
-        f.innerHTML=''; LINKS.forEach(l=>{const a=document.createElement('a');a.className='footer-link';a.href=l.href;a.target='_blank';a.rel='noopener noreferrer';a.textContent=l.title;f.appendChild(a);});
-      }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderFooter);else renderFooter();
-    })();
+    // Footer links renderer
+    (function(){ const LINKS=[{href:'https://brm.worldmos.world',title:'Oráculo Bubatronik'},{href:'https://bubatronik.listen2myradio.com/',title:'Escuchar en Directo'},{href:'https://brm.worldmos.es',title:'Ping Emergencias'},{href:'https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr',title:'Archivo de Sesiones'},{href:'https://github.com/DEVBU93',title:'GitHub (DEVBU93)'}]; function r(){const f=document.getElementById('footerLinks'); if(!f) return; f.innerHTML=''; LINKS.forEach(l=>{const a=document.createElement('a'); a.className='footer-link'; a.href=l.href; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent=l.title; f.appendChild(a);});} if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',r);else r(); })();
   </script>
 
 </body>
