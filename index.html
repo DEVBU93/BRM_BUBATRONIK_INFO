@@ -1,147 +1,106 @@
-<!DOCTYPE html>
-<html lang="es" data-status="checking">
+<!doctype html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS — Radio comunitaria independiente desde Sant Salvador, Tarragona. Sin jerarquías, para tod@s.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS — Radio comunitaria independiente desde Sant Salvador, Tarragona.">
   <meta name="theme-color" content="#f5c518">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="BRM INFO">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS 📻">
-  <meta property="og:description" content="Radio comunitaria independiente desde Sant Salvador, Tarragona — Sin jerarquías, para tod@s. Debates, conocimiento, música Open Format. ¡AUUUAUUU!">
-  <meta property="og:url" content="https://brm.worldmos.info">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BRM · BUBATRONIK RADIO · INFO & PROGRAMAS">
-  <meta name="twitter:description" content="Radio comunitaria independiente · Sant Salvador · Para tod@s · ¡AUUUAUUU! 🐺">
-  <title>📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS · 666.333</title>
+  <title>📻 BRM · BUBATRONIK RADIO · INFO & PROGRAMAS</title>
 
-  <!-- Performance: preconnect + swap font display -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Syne:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Critical CSS (keeps first paint consistent). Full styling lives inline below for simplicity; it's been cleaned/condensed. */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    :root{
-      --bg:#0a0a0a; --bg2:#0f0f14; --bg3:#161620; --bg4:#1e1e2c;
-      --amber:#f5c518; --amber2:#ffd700; --amber3:#fff3a0; --amber4:#8a6e00; --amber5:rgba(245,197,24,0.07);
-      --red:#ef4444; --green:#10b981; --white:#f0ede8; --muted:#6a6a7a; --muted2:#3a3a50;
-      --border:#1e1e32; --border2:#2a2a44; --glow-a:rgba(245,197,24,0.10);
-      --font-mono:'JetBrains Mono', 'Courier New', monospace; --font-cond:'Barlow Condensed', monospace;
-      --font-disp:'Bebas Neue', monospace; --font-syne:'Syne', monospace;
-      --ticker-h:36px; --fs-xs:9px; --fs-sm:11px; --fs-base:13px;
-    }
-    html{scroll-behavior:smooth;overflow-x:hidden}
-    body{background:var(--bg);color:var(--white);font-family:var(--font-mono);min-height:100vh;-webkit-font-smoothing:antialiased}
-    /* Background grain (data URI optimized) */
-    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06' fill='black'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5}
-    .scanlines{position:fixed;inset:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06)3px);pointer-events:none;z-index:9998;mix-blend-mode:overlay}
-    .bg-mesh{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at 5% 10%,rgba(245,197,24,0.04) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 95% 90%,rgba(245,197,24,0.03) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(16,185,129,0.015)0%,transparent 70%)}
-    /* Ticker */
-    .ticker-wrap{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--ticker-h);background:var(--amber);display:flex;align-items:center;overflow:hidden;box-shadow:0 2px 20px rgba(245,197,24,0.35)}
-    .ticker-badge{font-family:var(--font-disp);font-size:14px;letter-spacing:2px;color:var(--bg);padding:0 16px;height:100%;display:flex;align-items:center;gap:8px;white-space:nowrap;border-right:2px solid rgba(0,0,0,0.15)}
-    .ticker-live-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink-dot 1.2s step-start infinite}
-    @keyframes blink-dot{0%,49%{opacity:1}50%,100%{opacity:0.2}}
-    .ticker-overflow{overflow:hidden;flex:1;display:flex}
-    .ticker-track{display:flex;animation:ticker-scroll 280s linear infinite;white-space:nowrap}
-    @keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    /* Basic layout and footer */
-    .page{position:relative;z-index:1;padding-top:var(--ticker-h);max-width:1400px;margin:0 auto}
-    header.station-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 36px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(15,15,20,0.98),rgba(10,10,10,0.85));backdrop-filter:blur(12px)}
-    .station-logo{font-family:var(--font-disp);font-size:clamp(24px,3.5vw,48px);letter-spacing:4px;background:linear-gradient(135deg,var(--amber),var(--amber2));-webkit-background-clip:text;color:transparent}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
-    .footer-link{font-family:var(--font-cond);font-size:11px;color:var(--amber4);text-decoration:none;letter-spacing:1.5px;font-weight:700;text-transform:uppercase}
-    .footer-link:hover{color:var(--amber2)}
-    .footer-copy{font-size:var(--fs-xs);color:var(--muted2)}
-    /* Responsive minimal */
-    @media(max-width:960px){header.station-header{grid-template-columns:1fr auto;padding:16px 20px}.header-right{display:none}}
-    @media(max-width:480px){.ticker-badge{display:none}.station-logo{font-size:22px}.footer-links{display:none}}
-  </style>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="bg-mesh"></div>
-  <div class="ticker-wrap" role="region" aria-label="Ticker informativo">
-    <div class="ticker-badge"><span class="ticker-live-dot" aria-hidden="true"></span> 📻 BUBATRONIK RADIO · INFO</div>
-    <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack" aria-hidden="true"></div></div>
-  </div>
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <h1>BUBATRONIK RADIO <small class="freq">666.333</small></h1>
+      <p class="tag">Radio comunitaria · Sant Salvador · Open Format</p>
+    </div>
+    <nav class="main-nav" role="navigation" aria-label="Secciones">
+      <button data-tab="inicio" class="tab active" aria-controls="inicio">🏠 INICIO</button>
+      <button data-tab="queesbrm" class="tab" aria-controls="queesbrm">📡 QUÉ ES BRM</button>
+      <button data-tab="programas" class="tab" aria-controls="programas">📋 PROGRAMAS</button>
+      <button data-tab="colabora" class="tab" aria-controls="colabora">🤝 COLABORA</button>
+    </nav>
+  </header>
 
-  <div class="page" id="page">
-    <header class="station-header" role="banner">
-      <div class="header-left">
-        <div class="station-logo">BUBATRONIK RADIO</div>
-        <div class="header-badge">MANIFIESTO · PROGRAMAS · PARTICIPACIÓN</div>
-        <div class="header-tagline">WorldMOS · AguaFlow · DPN-Game · © 2026</div>
-      </div>
+  <main id="main" tabindex="-1">
+    <section id="inicio" class="panel active" role="region" aria-labelledby="manifiesto-title">
+      <h2 id="manifiesto-title">MANIFIESTO</h2>
+      <article class="manifiesto">
+        <p><strong>BUBATRONIK RADIO</strong> nace en Sant Salvador, Tarragona como un proyecto independiente, comunitario y autogestionado. Somos una radio hecha por y para la comunidad: música, debate y cultura sin jerarquías.</p>
+        <p>Creemos en el poder de la música como herramienta de encuentro y bienestar. Open Format significa que la música entra por calidad y emoción, no por algoritmos.</p>
+        <blockquote>La manada somos todas las personas que queremos compartir sonido, ideas y tiempo. ¡AUUUAUUU! 🐺</blockquote>
+        <p class="cta-row"><a class="btn" href="#colabora">Quiero colaborar</a> <a class="btn secondary" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">Escuchar en directo</a></p>
+      </article>
+    </section>
 
-      <div class="onair-center" aria-live="polite">
-        <div class="onair-pulse"><div class="onair-inner">LIVE</div></div>
-        <div class="onair-label">▶ ON AIR</div>
-      </div>
-
-      <div class="header-right" aria-hidden="false">
-        <div class="freq-number">666.333</div>
-        <div class="freq-band">Open Format · Radio Independiente</div>
-        <div class="freq-clock" id="clock">--:-- · --/--/----</div>
-      </div>
-    </header>
-
-    <!-- Main content preserved: manifiesto, bridge, tabs, forms, sections... -->
-    <main>
-      <section class="section" aria-labelledby="manifiesto-title">
-        <h2 id="manifiesto-title" class="section-title">MANIFIESTO</h2>
-        <p class="manifiesto-text">BUBATRONIK RADIO nace desde Sant Salvador, Tarragona como un proyecto de radio independiente, comunitaria y cultural. Sin algoritmos que decidan por ti. Open Format: lo que suena bien entra en rotación.</p>
-        <div class="divider" aria-hidden="true"></div>
-
-        <div class="bridge-hero" role="region" aria-label="Enlaces de escucha">
-          <div class="bridge-live-dot" aria-hidden="true"></div>
-          <div class="bridge-content">
-            <div class="bridge-eyebrow">📻 BUBATRONIK RADIO · EN EMISIÓN 24/7 · 666.333</div>
-            <a class="bridge-cta" href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener noreferrer">🔊 Escuchar BUBATRONIK RADIO en Directo</a>
-            <a class="bridge-cta" href="https://brm.worldmos.world" target="_blank" rel="noopener noreferrer">🎛️ Escuchar Oraculo Bubatronik</a>
-            <a class="bridge-cta" href="https://brm.worldmos.es" target="_blank" rel="noopener noreferrer">🚨 PING Emergencias</a>
-            <div class="bridge-tagline">enlaces de interés.</div>
-          </div>
+    <section id="queesbrm" class="panel" role="region" aria-labelledby="queesbrm-title">
+      <h2 id="queesbrm-title">QUÉ ES BRM</h2>
+      <div class="about-grid">
+        <div>
+          <p>BRM es un nodo cultural que combina radio en directo, archivo de sesiones y actividades comunitarias. Está impulsado por un equipo local y colaboradores internacionales.</p>
+          <h3>Tecnología</h3>
+          <ul>
+            <li>Stream Shoutcast 128kbps</li>
+            <li>Proxy HTTPS para mixed-content</li>
+            <li>Hosting: GitHub Pages + CI</li>
+          </ul>
         </div>
-      </section>
-      <!-- ...rest of the sections (QUE ES BRM, PROGRAMAS, COLABORA) preserved as in production -->
-    </main>
-
-    <footer class="site-footer" role="contentinfo">
-      <div>
-        <div class="footer-brand">BRM · BUBATRONIK RADIO · INFO &amp; PROGRAMAS</div>
-        <div class="footer-legal">© 2026 DEVBU93 · Rubén Rodríguez Francisco · WORLDMOS · AGUAFLOW · DPNGAME</div>
+        <aside class="about-side">
+          <dl>
+            <dt>Creador</dt><dd>Rubén · DEVBU93</dd>
+            <dt>Sede</dt><dd>📍 Sant Salvador, Tarragona</dd>
+            <dt>Formato</dt><dd>Open Format</dd>
+          </dl>
+        </aside>
       </div>
+    </section>
 
-      <nav class="footer-links" id="footerLinks" aria-label="Enlaces rápidos"></nav>
-
-      <div class="footer-copy">
-        Sant Salvador · Tarragona · Catalunya · España<br>
-        Radio comunitaria · SGAE/AGEDI · RGPD compliant · ¡AUUUAUUU! 🐺
+    <section id="programas" class="panel" role="region" aria-labelledby="programas-title">
+      <h2 id="programas-title">PROGRAMAS</h2>
+      <p class="lead">Programación destacada — si quieres que añadamos tu programa, usa Colabora.</p>
+      <div class="programs-grid" id="programsGrid">
+        <!-- program cards injected by app.js or fallbacks in HTML -->
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <!-- Minimal scripts (defer non-critical, keep original behavior) -->
-  <script>
-    // Ticker sample items (non-blocking)
-    (function(){ const items = ['La manada suena hoy: Vermut Dominical · 12h','Escucha en directo: 128kbps MP3','Archivo de sesiones en Drive']; const track = document.getElementById('tickerTrack'); if(!track) return; items.forEach(i=>{const s=document.createElement('span'); s.textContent = i; track.appendChild(s);}); })();
+    <section id="colabora" class="panel" role="region" aria-labelledby="colabora-title">
+      <h2 id="colabora-title">COLABORA</h2>
+      <p>Si quieres proponer un programa, participar o donar, rellena este formulario. Enviamos por AJAX a /api/contact y ofrecemos fallback mailto.</p>
 
-    // Footer links renderer (conservative)
-    (function(){ const LINKS = [
-      { href: 'https://brm.worldmos.world', title: 'Oráculo Bubatronik' },
-      { href: 'https://bubatronik.listen2myradio.com/', title: 'Escuchar en Directo' },
-      { href: 'https://brm.worldmos.es', title: 'Ping Emergencias' },
-      { href: 'https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr', title: 'Archivo de Sesiones' },
-      { href: 'https://github.com/DEVBU93', title: 'GitHub (DEVBU93)' }
-    ]; function render(){ const f = document.getElementById('footerLinks'); if(!f) return; f.innerHTML = ''; LINKS.forEach(l=>{ const a = document.createElement('a'); a.className='footer-link'; a.href=l.href; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent = l.title; f.appendChild(a); }); } if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render(); })();
+      <form id="colaboraForm" class="brm-form" action="/api/contact" method="post" novalidate>
+        <div class="form-row">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" required placeholder="Tu nombre">
+        </div>
+        <div class="form-row">
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" required placeholder="tu@ejemplo.com">
+        </div>
+        <div class="form-row">
+          <label for="subject">Asunto</label>
+          <input id="subject" name="subject" type="text" required placeholder="Proponer programa / Colaboración">
+        </div>
+        <div class="form-row">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="6" required placeholder="Cuéntanos tu idea..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn">Enviar propuesta</button>
+          <button type="button" id="mailtoBtn" class="btn secondary">Enviar por correo</button>
+        </div>
+      </form>
+    </section>
+  </main>
 
-    // Clock simple (keeps legacy behavior)
-    (function(){ function updateClock(){ const el=document.getElementById('clock'); if(!el) return; const d=new Date(); el.textContent = d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) + ' · ' + d.toLocaleDateString(); } updateClock(); setInterval(updateClock, 60*1000); })();
-  </script>
+  <footer class="site-footer" role="contentinfo">
+    <small>© 2026 BUBATRONIK RADIO · DEVBU93 — <a href="https://github.com/DEVBU93/BUBATRONIK_BRM_INFO" target="_blank" rel="noopener">Repositorio</a></small>
+    <nav class="foot-links"><a href="https://brm.worldmos.world" target="_blank" rel="noopener">Oráculo</a> · <a href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener">Escuchar</a></nav>
+  </footer>
+
+  <div id="toast" aria-live="polite" class="toast" hidden></div>
+
+  <script src="/app.js" defer></script>
 </body>
 </html>
