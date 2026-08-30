@@ -705,8 +705,6 @@
     <nav class="nav-tabs" role="tablist" aria-label="Secciones de BRM Info">
       <button class="nav-tab active" data-tab="inicio"     role="tab" aria-selected="true">🏠 INICIO</button>
       <button class="nav-tab"        data-tab="queesbrm"   role="tab">📡 QUÉ ES BRM</button>
-      <button class="nav-tab"        data-tab="v1actual"   role="tab">🎵 V1 ACTUAL</button>
-      <button class="nav-tab"        data-tab="visionv2"   role="tab">🚀 VISIÓN V2</button>
       <button class="nav-tab"        data-tab="programas"  role="tab">📋 PROGRAMAS</button>
       <button class="nav-tab"        data-tab="colabora"   role="tab">🤝 COLABORA</button>
     </nav>
@@ -716,29 +714,39 @@
          Contiene: player mini + manifiesto + V1 vs V2
     ═══════════════════════════════════════════════════════ -->
     <div class="tab-panel active" id="tab-inicio">
- 
-      <!-- PLAYER MINI CON DOT ROJO PULSANTE -->
-      <div class="mini-player reveal">
-        <div class="mini-player-header">
-          <div class="mini-player-dot"></div>
-          <div>
-            <div class="mini-player-label">📻 Radio en Directo — BUBATRONIK_BRM</div>
-            <div class="mini-player-desc">128 kbps · MP3 · Open Format · Sant Salvador, Tarragona</div>
-          </div>
-        </div>
- 
-        <!-- AUDIO HTML5 nativo — URL del stream según el prompt -->
-        <audio controls preload="none" aria-label="Stream BUBATRONIK_BRM Radio">
-          <source src="http://bubatronik.radiostream321.com/" type="audio/mpeg">
-          Tu navegador no soporta audio HTML5. Usa los links externos de abajo.
-        </audio>
- 
         <!-- Links externos al stream -->
         <div class="mini-player-links">
           <a class="player-ext-link" href="https://bubatronik.radiostream321.com/" target="_blank" rel="noopener" title="Abrir player nativo">🌐 RadioStream321</a>
           <a class="player-ext-link" href="https://brm.worldmos.world" target="_blank" rel="noopener" title="Web principal BRM">🛰️ BRM Main Site</a>
           <a class="player-ext-link" href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener" title="Instagram de BRM">📸 Instagram</a>
           <a class="player-ext-link" href="https://drive.google.com/drive/folders/1d0ODTI5SiBPtrYFHZVZUyJWG_V72_hIr" target="_blank" rel="noopener" title="Sesiones en Drive">💾 Sesiones Drive</a>
+            <!-- ENLACES: sección añadida con todos los enlaces del CSV proporcionado -->
+        <section id="enlaces" class="panel enlaces-section" role="region" aria-labelledby="enlaces-title">
+        <h2 id="enlaces-title">ENLACES</h2>
+        <p class="lead">Enlaces oficiales y recursos de BRM. Útiles para escuchar, compartir y acceder al archivo.</p>
+        <div class="enlaces-grid">
+        <ul class="enlaces-list">
+          <li><strong>Listen2myradio</strong> — <a href="https://bubatronik.listen2myradio.com/" target="_blank" rel="noopener noreferrer">https://bubatronik.listen2myradio.com/</a></li>
+          <li><strong>GoDaddy (brm.worldmos.info)</strong> — <a href="https://brm.worldmos.info/" target="_blank" rel="noopener noreferrer">https://brm.worldmos.info/</a></li>
+          <li><strong>GoDaddy (brm.worldmos.world)</strong> — <a href="https://brm.worldmos.world/" target="_blank" rel="noopener noreferrer">https://brm.worldmos.world/</a></li>
+          <li><strong>GoDaddy (brm.worldmos.es)</strong> — <a href="https://brm.worldmos.es/" target="_blank" rel="noopener noreferrer">https://brm.worldmos.es/</a></li>
+          <li><strong>Lovable (Ping)</strong> — <a href="https://ping-tarragona-ready.lovable.app/" target="_blank" rel="noopener noreferrer">https://ping-tarragona-ready.lovable.app/</a></li>
+          <li><strong>Google Drive (Archivo sesiones)</strong> — <a href="https://drive.google.com/drive/folders/1I4TDFlJQBcp4M6VNS4KNQlMVbomcg-Zg?usp=drive_link" target="_blank" rel="noopener noreferrer">Archivo de sesiones (Drive)</a></li>
+          <li><strong>Facebook</strong> — <a href="https://www.facebook.com/profile.php?id=61570757215270" target="_blank" rel="noopener noreferrer">https://www.facebook.com/...</a></li>
+          <li><strong>Instagram</strong> — <a href="https://www.instagram.com/bubatronik_brm/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/bubatronik_brm/</a></li>
+          <li><strong>YouTube (playlist)</strong> — <a href="https://www.youtube.com/playlist?list=PLc5KM2_2P5GEwM0HdkRvfKds575jjhylu" target="_blank" rel="noopener noreferrer">Playlist 1</a></li>
+          <li><strong>YouTube (playlist)</strong> — <a href="https://www.youtube.com/playlist?list=PLUVib7eIEoIoKcgL0pXThJRzqb6VLwcs5" target="_blank" rel="noopener noreferrer">Playlist 2</a></li>
+          <li><strong>YouTube (canal)</strong> — <a href="https://www.youtube.com/@BRM_BPM" target="_blank" rel="noopener noreferrer">https://www.youtube.com/@BRM_BPM</a></li>
+          <li><strong>YouTube (canal)</strong> — <a href="https://youtube.com/@brm_bpm?si=HYna38v30bBJjvkm" target="_blank" rel="noopener noreferrer">https://youtube.com/@brm_bpm</a></li>
+          <li><strong>SoundCloud</strong> — <a href="https://soundcloud.com/buba-rodriguez/sets" target="_blank" rel="noopener noreferrer">https://soundcloud.com/buba-rodriguez/sets</a></li>
+          <li><strong>Tidal</strong> — <a href="https://tidal.com/playlist/19a40b03-ec33-41f7-b1d4-8d6c2e410727" target="_blank" rel="noopener noreferrer">https://tidal.com/...</a></li>
+          <li><strong>Amazon Music (playlist)</strong> — <a href="https://music.amazon.es/user-playlists/ed99cb07-e49a-40f2-bcbe-90be6a0de76e" target="_blank" rel="noopener noreferrer">Playlist A</a></li>
+          <li><strong>Amazon Music (playlist)</strong> — <a href="https://music.amazon.es/user-playlists/cffa1f34-1174-4683-af9e-e36cb893f358" target="_blank" rel="noopener noreferrer">Playlist B</a></li>
+          <li><strong>Amazon Music (playlist)</strong> — <a href="https://music.amazon.es/user-playlists/1deda1ea-919b-4357-902b-3cbfa697ae1c" target="_blank" rel="noopener noreferrer">Playlist C</a></li>
+          <li><strong>Spotify</strong> — <a href="https://open.spotify.com/user/31dkd2ke74fzflteqhli32n7vf7i" target="_blank" rel="noopener noreferrer">https://open.spotify.com/user/31dkd2ke74fzflteqhli32n7vf7i</a></li>
+        </ul>
+        </div>
+        </section>
         </div>
       </div>
  
@@ -888,12 +896,12 @@
           </div>
         </div>
       </div>
-    </div><!-- /tab-queesbrm -->
+
  
     <!-- ═══════════════════════════════════════════════════════
          TAB: V1 ACTUAL
     ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-v1actual">
+
       <div class="section">
         <div class="section-title reveal">V1 · LO QUE HAY</div>
         <div class="section-sub reveal">Estado actual · Activo · Funcionando · Real</div>
@@ -950,13 +958,13 @@
           <span class="gtag cool">Funk</span>
           <span class="gtag hot">Open Format ∞</span>
         </div>
-      </div>
+      
     </div><!-- /tab-v1actual -->
  
     <!-- ═══════════════════════════════════════════════════════
          TAB: VISIÓN V2
     ═══════════════════════════════════════════════════════ -->
-    <div class="tab-panel" id="tab-visionv2">
+    
       <div class="section">
         <div class="section-title reveal">VISIÓN V2</div>
         <div class="section-sub reveal">Lo que viene · En construcción · No es Matrix · Es posible</div>
@@ -1011,12 +1019,12 @@
           <span class="cf-arr">&nbsp;&nbsp;↓ Ciclo cada 2–4 horas</span><br>
           <span class="cf-ok">✓ Manada informada, manada conectada, manada activa</span>
         </div>
-      </div>
+    
     </div><!-- /tab-visionv2 -->
- 
+    </div><!-- /tab-queesbrm -->
     <!-- ═══════════════════════════════════════════════════════
          TAB: PROGRAMAS
-    ═══════════════════════════════════════════════════════ -->
+    ══════════════════════════════════════════════════════ -->
     <div class="tab-panel" id="tab-programas">
       <div class="section">
         <div class="section-title reveal">PROGRAMAS</div>
@@ -1123,43 +1131,6 @@
         <div class="radar-label reveal">🌱 Otras ideas en el radar</div>
  
         <div class="programs-grid reveal">
- 
-          <div class="program-card">
-            <div class="program-emoji">☀️</div>
-            <div class="program-info">
-              <div class="program-name">VERMUT BUBATRONIK</div>
-              <div class="program-desc">El ritual sagrado de la comunidad. Música de domingo — clásicos, funk, soul, buenas vibraciones y vermut obligatorio. En vivo desde Sant Salvador cada semana.</div>
-              <div class="program-tags">
-                <span class="ptag">Domingos 12h</span><span class="ptag">En vivo</span><span class="ptag">Música</span><span class="ptag">Ritual</span>
-              </div>
-            </div>
-            <div class="prog-status status-live">🔴 Activo</div>
-          </div>
- 
-          <div class="program-card">
-            <div class="program-emoji">🎛️</div>
-            <div class="program-info">
-              <div class="program-name">SESIONES NUMERADAS</div>
-              <div class="program-desc">Sesiones largas de 4 a 6 horas, multigenero, sin pausa, sin etiquetas. Open Format puro. Grabadas y disponibles en Drive. La Sesión 3: 4.96 GB de música no-stop.</div>
-              <div class="program-tags">
-                <span class="ptag">Variable</span><span class="ptag">Grabadas</span><span class="ptag">Drive</span><span class="ptag">4–6h</span>
-              </div>
-            </div>
-            <div class="prog-status status-live">🔴 Activo</div>
-          </div>
- 
-          <div class="program-card">
-            <div class="program-emoji">📰</div>
-            <div class="program-info">
-              <div class="program-name">NOTÍCIES DE BARRI</div>
-              <div class="program-desc">Bloque informativo localizado: noticias del Camp de Tarragona, Cataluña y lo que afecta al barrio real. Sin bulo, con fuente cuando es posible. Con o sin IA según disponibilidad.</div>
-              <div class="program-tags">
-                <span class="ptag">Noticias</span><span class="ptag">Zona</span><span class="ptag">V2</span><span class="ptag">IA</span>
-              </div>
-            </div>
-            <div class="prog-status status-soon">🟡 Próximo</div>
-          </div>
- 
           <div class="program-card">
             <div class="program-emoji">🎙️</div>
             <div class="program-info">
